@@ -1,0 +1,30 @@
+[
+  {
+    "nombre": "Television 50 p",
+    "precioCoste": 200,
+    "precioVenta": 250,
+    "stockActual": 13,
+    "stockMin": 5
+  },
+  {
+    "nombre": "Television 60 p",
+    "precioCoste": 300,
+    "precioVenta": 350,
+    "stockActual": 10,
+    "stockMin": 5
+  },
+  {
+    "nombre": "Alexa",
+    "precioCoste": 250,
+    "precioVenta": 300,
+    "stockActual": 4,
+    "stockMin": 5
+  },
+  {
+    "nombre": "Google Home",
+    "precioCoste": 270,
+    "precioVenta": 370,
+    "stockActual": 4,
+    "stockMin": 5
+  }
+]

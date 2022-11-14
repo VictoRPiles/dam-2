@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"/>
+    <title>Electrodomésticos Ionic</title>
+</head>
+
+<body>
+<ion-app>
+    <!-- Define la ventana de la app -->
+    <ion-header translucent="true">
+        <ion-toolbar>
+            <ion-title>Fumador de porros</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="ion-padding" color="primary">
+        <ion-list>
+            <ion-item>
+                <ion-select placeholder="Selecciona porro" id="desplegable">
+                    <!-- Generar items de los electrodomésticos-->
+
+                </ion-select>
+            </ion-item>
+        </ion-list>
+
+        <ion-grid id="informacion">
+            <!-- Generar ion-row y ion-col -->
+        </ion-grid>
+
+        <div id="totales"></div>
+    </ion-content>
+
+</ion-app>
+
+<script src="app.js"></script>
+</body>
+
+</html>

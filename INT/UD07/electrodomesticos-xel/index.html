@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <!-- Xel -->
+    <script src="node_modules/xel/xel.js" type="module"></script>
+    <meta name="xel-theme" content="node_modules/xel/themes/adwaita.css">
+    <meta name="xel-accent-color" content="blue">
+    <meta name="xel-size" content="medium">
+    <meta name="xel-iconsets" content="node_modules/xel/iconsets/material.svg">
+
+    <title>Electrodomésticos</title>
+</head>
+
+<body>
+    <x-card>
+        <x-accordion expanded>
+            <header>
+                <x-label>Seleccione un producto de la lista:</x-label>
+            </header>
+
+            <main>
+                <div id="desplegable"></div>
+            </main>
+        </x-accordion>
+
+        <x-accordion expanded>
+            <header>
+                <x-label>Información del artículo</x-label>
+            </header>
+
+            <main>
+                <div id="informacion"></div>
+            </main>
+        </x-accordion>
+
+        <x-accordion expanded>
+            <header>
+                <x-label>Totales</x-label>
+            </header>
+
+            <main>
+                <div id="totales"></div>
+            </main>
+        </x-accordion>
+    </x-card>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

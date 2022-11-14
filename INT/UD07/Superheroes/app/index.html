@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Photon CSS -->
+    <link rel="stylesheet" href="../css/photon.css">
+    <!-- My CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <title>Superheroes</title>
+</head>
+<body>
+<div class="window">
+    <header class="toolbar toolbar-header">
+        <h1 class="title">Superhero list</h1>
+    </header>
+    <div class="window-content">
+        <div class="pane-group">
+            <!-- Sidebar -->
+            <div class="pane sidebar">
+                <div class="split-vertical-sm padded-more">
+                    <!-- Table -->
+                    <p class="table-title">Superhero:</p>
+
+                    <table class="table-striped">
+                        <tbody>
+                        <tr>
+                            <td>Superhero:</td>
+                            <td id="td-superhero-data">data</td>
+                        </tr>
+                        <tr>
+                            <td>Publisher:</td>
+                            <td id="td-publisher-data">data</td>
+                        </tr>
+                        <tr>
+                            <td>Alter ego:</td>
+                            <td id="td-alter-data">data</td>
+                        </tr>
+                        <tr>
+                            <td>First appearance:</td>
+                            <td id="td-appearance-data">data</td>
+                        </tr>
+                        <tr>
+                            <td>Characters:</td>
+                            <td id="td-characters-data">data</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="split-vertical-lg padded-more">
+                    <hr>
+                    <!-- Votes -->
+                    <p class="table-title">Your vote:</p>
+
+                    <div class="form-group">
+                        <label for="input-vote">Your name:</label>
+                        <input type="text" class="form-control" placeholder="Name" id="input-vote">
+                        <button class="btn btn-form btn-positive" id="btn-vote">Vote</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Main -->
+            <div class="pane">
+                <div class="center">
+                    <!-- Superhero Img -->
+                    <img class="portrait padded-more" src="../res/img/batman.jpg"
+                         alt="superhero portrait" id="img-superhero">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="toolbar toolbar-footer split-footer">
+        <button class="btn btn-primary" id="btn-prev"><-</button>
+        <button class="btn btn-primary" id="btn-next">-></button>
+    </footer>
+</div>
+
+<!-- Superhero JS -->
+<script src="superhero.js"></script>
+</body>
+</html>

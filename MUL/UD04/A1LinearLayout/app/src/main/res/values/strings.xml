@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">A1-LinearLayout</string>
+    <string name="azul">Azul</string>
+    <string name="verde">Verde</string>
+    <string name="rojo">Rojo</string>
+    <string name="amarillo">Amarillo</string>
+    <string name="columna_uno">Columna Uno</string>
+    <string name="columna_dos">Columna Dos</string>
+    <string name="columna_tres">Columna Tres</string>
+    <string name="columna_cuatro">Columna Cuatro</string>
+</resources>

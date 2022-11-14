@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Photon CSS -->
+    <link rel="stylesheet" href="../css/photon.css">
+    <!-- My CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <title>Cartes</title>
+</head>
+<body>
+<div class="window">
+    <header class="toolbar toolbar-header">
+        <h1 class="title">Cartes</h1>
+    </header>
+    <div class="window-content">
+        <div class="pane-group">
+            <!-- Sidebar -->
+            <div class="pane-sm sidebar">
+                <nav class="nav-group">
+                    <!-- Credit -->
+                    <p><strong>Crèdit: <span id="valor-credit">1000</span></strong></p>
+                    <hr>
+                    <!-- Aposta -->
+                    <label for="input-aposta"><strong>Aposta:</strong></label>
+                    <input class="form-control" type="text" id="input-aposta" name="aposta">
+                    <!-- Select -->
+                    <select class="form-control" id="select-palo">
+                        <option value="bastos">Bastos</option>
+                        <option value="copes">Copes</option>
+                        <option value="espases">Espases</option>
+                        <option value="oros">Oros</option>
+                    </select>
+                    <hr>
+                    <!-- Botons -->
+                    <button class="btn btn-positive" id="btn-apostar">Apostar</button>
+                    <button class="btn btn-positive" id="btn-reset">Reset</button>
+                    <hr>
+                    <!-- Animació -->
+                    <img src="../res/img/neutral.png" alt="animació" id="img-animacio" width="200px">
+                </nav>
+            </div>
+            <!-- Cartes -->
+            <div class="pane wrapper">
+                <img src="../res/img/dorso.png" alt="carta01" id="img-carta01">
+                <img src="../res/img/dorso.png" alt="carta02" id="img-carta02">
+                <img src="../res/img/dorso.png" alt="carta03" id="img-carta03">
+                <img src="../res/img/dorso.png" alt="carta04" id="img-carta04">
+                <img src="../res/img/dorso.png" alt="carta05" id="img-carta05">
+                <img src="../res/img/dorso.png" alt="carta06" id="img-carta06">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Notificació Xel -->
+<x-notification id="notificacio" timeout="3000"></x-notification>
+<!-- Xel JS -->
+<script src="../node_modules/xel/xel.js" type="module"></script>
+<!-- Cartes JS -->
+<script src="cartes.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+/* Font de la pàgina */
+body {
+    font-family: 'JetBrains Mono', sans-serif !important;
+}
+
+/* El div de cartes */
+.wrapper {
+    border: 2px solid #5c5a5a;
+    border-radius: 5px;
+    background-color: lightgrey;
+    padding: 12pt;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.wrapper > img {
+    border: 2px solid #8a8585;
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding: 1em;
+    color: #0e0d0d;
+}
+
+/* Sobreescriure els estils de Photon */
+.sidebar {
+    padding: 10px;
+}
+
+h1 {
+    font-size: 1.5em !important;
+    font-weight: bold !important;
+}
+
+p, label, .form-control {
+    margin: 0;
+}
+
+hr {
+    margin: 10px 0;
+}

@@ -1,0 +1,15 @@
+{
+  "name": "electrodomesticos",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "electron": "^21.2.1",
+    "xel": "^0.17.5"
+  }
+}

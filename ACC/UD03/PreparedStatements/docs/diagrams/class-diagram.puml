@@ -1,0 +1,36 @@
+@startuml
+class org.example.connection.jdbc.JDBCHelper {
+- Connection connection
++ void printResultSet(ResultSet)
++ void printDatabaseMetadata()
++ List<String> getColumnNamesFromTable(String)
+}
+class org.example.connection.SQLConnection {
+- Connection connection
++ void initConnection(String)
++ void closeConnection()
++ ResultSet selectQuery(String)
++ int updateQuery(String)
++ Connection getConnection()
+}
+class org.example.App {
+- String databaseURL
+- SQLConnection connection
+- JDBCHelper helper
+- void deleteDirectoryIfExists(String)
+- String[] getValuesFromFile(String)
+- void createTable(String,List<String>)
+- void insertIntoTableValues(String,List<String>,List<Class<?>>)
+- void showAllFromTable(String)
+- void quit()
+- void printWelcomeMessage()
++ {static} void main(String[])
+}
+interface org.example.connection.Connectable {
+~ void initConnection(String)
+~ void closeConnection()
+}
+
+
+org.example.connection.Connectable <|.. org.example.connection.SQLConnection
+@enduml

@@ -1,0 +1,49 @@
+@startuml
+abstract class org.example.menu.Menu {
+- HashMap<Integer,String> options
++ boolean addOption(int,String)
++ boolean containsOptionWithKey(int)
++ HashMap<Integer,String> getOptions()
+}
+class org.example.connection.jdbc.JDBCHelper {
+- Connection connection
++ void printResultSet(ResultSet)
++ void printDatabaseMetadata()
++ List<String> getColumnNamesFromTable(String)
+}
+class org.example.connection.SQLConnection {
+- Connection connection
++ void initConnection(String)
++ void closeConnection()
++ ResultSet selectQuery(String)
++ int updateQuery(String)
++ Connection getConnection()
+}
+class org.example.menu.AppMenu {
++ String toString()
+}
+interface org.example.connection.Connectable {
+~ void initConnection(String)
+~ void closeConnection()
+}
+class org.example.App {
+- String databaseURL
+- AppMenu appMenu
+- SQLConnection connection
+- JDBCHelper helper
+- void showAllFromTable(String)
+- void addNewInTable(String,List<String>)
+- void addColumnToTable(String,String,String)
+- void evaluateCustomQuery(String)
+- void quit()
+- List<String> getValuesForTableColumns(String)
+- int inputMenuOption()
+- boolean runOption(int)
+- void printWelcomeMessage()
++ {static} void main(String[])
+}
+
+
+org.example.connection.Connectable <|.. org.example.connection.SQLConnection
+org.example.menu.Menu <|-- org.example.menu.AppMenu
+@enduml

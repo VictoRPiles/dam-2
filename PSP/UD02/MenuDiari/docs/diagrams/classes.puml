@@ -1,0 +1,16 @@
+@startuml
+class App {
++ {static} void main(String[])
+}
+class MenuOrganizer {
+- String inputMenu
+- String outputMenu
+- String regex
+- String[] readFromMenu()
+- void writeToMenu(String[])
++ void run()
+}
+
+
+Thread <|-- MenuOrganizer
+@enduml

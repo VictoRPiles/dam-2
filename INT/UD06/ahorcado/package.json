@@ -1,0 +1,15 @@
+{
+  "name": "ahorcado",
+  "version": "1.0.0",
+  "description": "Juego del ahorcado",
+  "main": "app/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Victor Piles",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^21.2.0"
+  }
+}

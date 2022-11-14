@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="./css/photon.css">
+
+    <link href='https://fonts.googleapis.com/css?family=JetBrains Mono' rel='stylesheet'>
+    <style>
+        body {
+            font-family: 'JetBrains Mono';
+            font-size: 16px;
+        }
+
+        .container {
+            margin: 0 auto;
+        }
+
+        .block {
+            display: inline-block;
+            position: relative;
+            border: 1px solid grey;
+            text-align: center;
+            font-size: .8em;
+            width: 2em;
+        }
+
+        .divblock {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        #pascal {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .block:nth-child(odd) {
+            background: rgb(255, 0, 0);
+        }
+
+        .block:nth-child(even) {
+            background: rgb(0, 204, 255);
+        }
+    </style>
+
+    <title>Triangulo de Pascal</title>
+</head>
+
+<body>
+    <div class="window">
+        <header class="toolbar toolbar-header">
+            <h1 class="title">Triangulo de Pascal</h1>
+        </header>
+        <div class="window-content">
+            <div class="pane-group">
+                <div class="pane-sm sidebar">
+                    <div class="form-group">
+                        <input type="number" name="filas" id="filas">
+                    </div>
+                    <button class="btn btn-mini btn-positive" onclick="printPascal()">Calcular</button>
+                </div>
+                <div class="pane">
+                    <div class="container">
+                        <div id="pascal"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="pascal.js"></script>
+</body>
+
+</html>

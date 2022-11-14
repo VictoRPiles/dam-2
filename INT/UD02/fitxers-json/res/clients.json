@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "listaClientes": [
+    {
+      "dni": "cliente1",
+      "nombre": "victor",
+      "telefono": "9111111"
+    },
+    {
+      "dni": "22222222",
+      "nombre": "cliente2",
+      "telefono": "9222222"
+    },
+    {
+      "dni": "33333333",
+      "nombre": "cliente3",
+      "telefono": "9333333"
+    },
+    {
+      "dni": "44444",
+      "nombre": "4444",
+      "telefono": "4444"
+    },
+    {
+      "dni": "55555",
+      "nombre": "55555",
+      "telefono": "55555"
+    },
+    {
+      "dni": "666666",
+      "nombre": "cliente 6",
+      "telefono": "666666"
+    }
+  ]
+}

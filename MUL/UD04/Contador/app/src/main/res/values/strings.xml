@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Contador</string>
+    <string name="mi_super_contador">Mi super contador</string>
+    <string name="mas">+</string>
+    <string name="menos">-</string>
+    <string name="_0">0</string>
+    <string name="valor_minimo">Valor mínimo</string>
+    <string name="valor_maximo">Valor máximo</string>
+    <string name="reset">Reset</string>
+</resources>

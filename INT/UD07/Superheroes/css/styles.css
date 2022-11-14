@@ -1,0 +1,32 @@
+/* Page font */
+body {
+    font-family: 'JetBrains Mono', sans-serif !important;
+}
+
+.split-vertical-sm {
+    height: 40%;
+}
+
+.split-vertical-lg {
+    height: 60%;
+}
+
+.center {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.portrait {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.table-title {
+    font-size: 3em;
+}
+
+.split-footer {
+    display: flex;
+    justify-content: center;
+}

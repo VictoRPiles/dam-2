@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link href="../css/styles.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Ahorcado</title>
+</head>
+<body>
+    <!-- Barra superior -->
+    <nav class="navbar sticky-top navbar-light bg-primary">
+        <div class="container-fluid justify-content-center">
+            <h1 class="text-light">Ahorcado</h1>
+        </div>
+    </nav>
+
+    <!-- Contenedores -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Jugadores -->
+            <div class="col-4 jugadores bg-light border-end border-3 p-3" id="jugadores">
+                <!-- Jugador 1 -->
+                <div class="row">
+                    <div class="col">
+                        <h3>Jugador 1</h3>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Palabra</span>
+                            <input id="input-palabra" type="password" class="form-control" placeholder="palabra"
+                                   aria-label="Palabra">
+                        </div>
+                    </div>
+                </div>
+                <!-- Jugador 2 -->
+                <div class="row">
+                    <div class="col">
+                        <h3>Jugador 2</h3>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Letra</span>
+                            <input id="input-letra" type="text" class="form-control" placeholder="letra"
+                                   aria-label="Letra">
+                        </div>
+                    </div>
+                    <h3 id="p-guiones" class="text-center text-danger"></h3>
+                </div>
+
+                <button class="btn-primary btn" id="btn-reiniciar">Reiniciar</button>
+            </div>
+            <!-- Juego -->
+            <div class="col-8 juego" id="juego">
+                <img id="img-ahorcado" src="../img/0.png" class="img-fluid" alt="imagen ahorcado">
+            </div>
+        </div>
+    </div>
+
+    <!-- Ahorcado JS -->
+    <script src="ahorcado.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+</body>
+</html>

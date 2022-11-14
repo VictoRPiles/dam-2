@@ -1,0 +1,4 @@
+strcpy(var,"value") -> asignar
+strcat(var,"value") -> concatenar
+
+var -> "valuevalue"

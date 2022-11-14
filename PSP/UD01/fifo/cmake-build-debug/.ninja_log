@@ -1,0 +1,5 @@
+# ninja log v5
+0	19	1666870284710000000	CMakeFiles/fifo.dir/nombres/calcula.c.o	d1264f805a6646a7
+0	17	1666870351140000000	build.ninja	331c6eeb3d187903
+0	23	1666870329430000000	CMakeFiles/fifo.dir/vocals/compta.c.o	72ac35eb28d2849b
+0	22	1666870329420000000	CMakeFiles/fifo.dir/vocals/frase.c.o	8bf48f8810e6e139

@@ -1,0 +1,24 @@
+<Grupo>
+  <alumnos>
+    <Alumno>
+      <nombre>Raul</nombre>
+      <apellidos>Garcia</apellidos>
+      <NIA>1</NIA>
+    </Alumno>
+    <Alumno>
+      <nombre>Maria</nombre>
+      <apellidos>Lopez</apellidos>
+      <NIA>2</NIA>
+    </Alumno>
+    <Alumno>
+      <nombre>Pablo</nombre>
+      <apellidos>Morales</apellidos>
+      <NIA>3</NIA>
+    </Alumno>
+    <Alumno>
+      <nombre>Raul</nombre>
+      <apellidos>Leal</apellidos>
+      <NIA>4</NIA>
+    </Alumno>
+  </alumnos>
+</Grupo>

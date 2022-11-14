@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PrimerAndroid</string>
+    <string name="exit">Salir</string>
+    <string name="hello_world">Hola Mundo</string>
+    <string name="avatar">Avatar</string>
+    <string name="salir">Salir</string>
+</resources>

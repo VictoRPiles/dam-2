@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios 01</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/photon.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Electron Javascript -->
+    <script src="main.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <!-- Wrap your entire app inside .window -->
+    <div class="window">
+        <!-- .toolbar-header sits at the top of your app -->
+        <header class="toolbar toolbar-header">
+            <h1 class="title">Photon</h1>
+        </header>
+
+        <!-- Your app's content goes inside .window-content -->
+        <div class="window-content">
+            <div class="padded-more">
+
+                <form>
+                    <div class="form-group">
+                        <label>DNI</label>
+                        <input type="text" class="form-control" id="dni">
+                    </div>
+                    <div class="form-group">
+                        <label>Nombres</label>
+                        <input type="text" class="form-control" id="nombre">
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono</label>
+                        <input type="number" class="form-control" id="telefono">
+                    </div>
+                </form>
+                <button class="btn btn-mini btn-primary" id="primero"><span class="icon icon-to-start"></span></button>
+                <button class="btn btn-mini btn-primary" id="anterior"><span class="icon icon-left"></span></button>
+                <button class="btn btn-mini btn-primary" id="siguiente"><span class="icon icon-right"></span></button>
+                <button class="btn btn-mini btn-primary" id="ultimo"><span class="icon icon-to-end"></span></button>
+                <button class="btn btn-mini btn-primary" id="borrar"><span class="icon icon-erase"></span></button>
+                <button class="btn btn-mini btn-primary" id="carpeta"><span class="icon icon-folder"></span></button>
+                <button class="btn btn-mini btn-primary" id="disquete"><span class="icon icon-floppy"></span></button>
+            </div>
+        </div>
+    </div>
+    <script src="app.js" charset="utf-8"></script>
+
+</body>
+
+</html>

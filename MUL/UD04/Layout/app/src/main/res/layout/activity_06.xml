@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/padre"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CBE5F6">
+
+    <RelativeLayout
+        android:id="@+id/hijo1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="#FFFF00">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/hijo2"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@id/hijo1"
+        android:background="#FF0000">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/hijo3"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/hijo2"
+        android:background="#00FF00">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/hijo4"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/hijo3"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@id/hijo2"
+        android:background="#0000FF">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/hijo5"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/hijo3"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@id/hijo1"
+        android:layout_toEndOf="@id/hijo4"
+        android:background="#FFFF00">
+
+    </RelativeLayout>
+
+</RelativeLayout>

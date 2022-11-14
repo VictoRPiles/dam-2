@@ -1,0 +1,38 @@
+@startuml
+class Passenger {
+- int travelClass
+- String surname
+- String name
+- int age
+- String boardingPlace
+- boolean survived
++ <<Create>> Passenger(int,String,String,int,String,boolean)
++ <<Create>> Passenger(String[])
++ int getTravelClass()
++ boolean hasSurvived()
++ String toString()
+}
+class PassengerThread {
+- List<Passenger> passengers
+- int travelClass
+- int nPassengers
+- int nSurvivors
+- int nDeaths
++ <<Create>> PassengerThread(List<Passenger>,int)
++ List<Passenger> getPassengersOfClass()
++ void start()
+}
+class PassengerController {
+- ArrayList<Passenger> passengers
++ void loadFromCsvFile(String)
++ ArrayList<Passenger> getPassengers()
++ String toString()
+}
+class App {
+- PassengerController controller
++ {static} void main(String[])
+}
+
+
+Thread <|-- PassengerThread
+@enduml
