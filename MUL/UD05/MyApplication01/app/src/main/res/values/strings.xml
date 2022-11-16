@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MyApplication01</string>
+    <string name="primerTexto">Texto construido desde el XML.\nTamaño 20dp, Bold y color red.</string>
+    <string name="segundoTexto">Texto construido desde Java.\nTamaño 20dp, Itálico y color blue.</string>
+    <string name="tercerTextoPrimeraParte">Texto construido desde el XML.</string>
+    <string name="tercerTextoSegundaParte">Añadido con append desde Java.</string>
+    <string name="cuartoTexto">Texto con fuente bungee.</string>
+</resources>

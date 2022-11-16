@@ -8,9 +8,8 @@ import java.util.Objects;
  * @author Victor Piles
  */
 @Entity
-@Table(name = "empleados", schema = "ejemplo", catalog = "")
-public class EmpleadosEntity
-{
+@Table(name = "empleados", schema = "ejemplo")
+public class EmpleadosEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "emp_no")
@@ -37,79 +36,72 @@ public class EmpleadosEntity
 	@JoinColumn(name = "dept_no", referencedColumnName = "dept_no")
 	private DepartamentosEntity departamentosByDeptNo;
 
-	public int getEmpNo()
-	{
+	public int getEmpNo() {
 		return empNo;
 	}
 
-	public void setEmpNo(int empNo)
-	{
+	public void setEmpNo(int empNo) {
 		this.empNo = empNo;
 	}
 
-	public String getApellido()
-	{
+	public String getApellido() {
 		return apellido;
 	}
 
-	public void setApellido(String apellido)
-	{
+	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
 
-	public String getOficio()
-	{
+	public String getOficio() {
 		return oficio;
 	}
 
-	public void setOficio(String oficio)
-	{
+	public void setOficio(String oficio) {
 		this.oficio = oficio;
 	}
 
-	public Integer getDir()
-	{
+	public Integer getDir() {
 		return dir;
 	}
 
-	public void setDir(Integer dir)
-	{
+	public void setDir(Integer dir) {
 		this.dir = dir;
 	}
 
-	public Date getFechaAlta()
-	{
+	public Date getFechaAlta() {
 		return fechaAlta;
 	}
 
-	public void setFechaAlta(Date fechaAlta)
-	{
+	public void setFechaAlta(Date fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
 
-	public Double getSalario()
-	{
+	public Double getSalario() {
 		return salario;
 	}
 
-	public void setSalario(Double salario)
-	{
+	public void setSalario(Double salario) {
 		this.salario = salario;
 	}
 
-	public Double getComision()
-	{
+	public Double getComision() {
 		return comision;
 	}
 
-	public void setComision(Double comision)
-	{
+	public void setComision(Double comision) {
 		this.comision = comision;
 	}
 
+	public DepartamentosEntity getDepartamentosByDeptNo() {
+		return departamentosByDeptNo;
+	}
+
+	public void setDepartamentosByDeptNo(DepartamentosEntity departamentosByDeptNo) {
+		this.departamentosByDeptNo = departamentosByDeptNo;
+	}
+
 	@Override
-	public boolean equals(Object o)
-	{
+	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 
@@ -126,8 +118,7 @@ public class EmpleadosEntity
 	}
 
 	@Override
-	public int hashCode()
-	{
+	public int hashCode() {
 		int result = empNo;
 		result = 31 * result + (apellido != null ? apellido.hashCode() : 0);
 		result = 31 * result + (oficio != null ? oficio.hashCode() : 0);
@@ -137,15 +128,5 @@ public class EmpleadosEntity
 		result = 31 * result + (comision != null ? comision.hashCode() : 0);
 		result = 31 * result + (departamentosByDeptNo != null ? departamentosByDeptNo.hashCode() : 0);
 		return result;
-	}
-
-	public DepartamentosEntity getDepartamentosByDeptNo()
-	{
-		return departamentosByDeptNo;
-	}
-
-	public void setDepartamentosByDeptNo(DepartamentosEntity departamentosByDeptNo)
-	{
-		this.departamentosByDeptNo = departamentosByDeptNo;
 	}
 }

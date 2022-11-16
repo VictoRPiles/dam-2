@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="primerTexto">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="segundoTexto">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="cuartoTexto">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/bungee_shade</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+</resources>

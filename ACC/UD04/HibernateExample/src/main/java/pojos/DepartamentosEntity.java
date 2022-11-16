@@ -9,9 +9,8 @@ import java.util.Set;
  * @author Victor Piles
  */
 @Entity
-@Table(name = "departamentos", schema = "ejemplo", catalog = "")
-public class DepartamentosEntity
-{
+@Table(name = "departamentos", schema = "ejemplo")
+public class DepartamentosEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "dept_no")
@@ -25,39 +24,32 @@ public class DepartamentosEntity
 	@OneToMany(mappedBy = "departamentosByDeptNo")
 	private Collection<EmpleadosEntity> empleadosByDeptNo;
 
-	public int getDeptNo()
-	{
+	public int getDeptNo() {
 		return deptNo;
 	}
 
-	public void setDeptNo(int deptNo)
-	{
+	public void setDeptNo(int deptNo) {
 		this.deptNo = deptNo;
 	}
 
-	public String getDnombre()
-	{
+	public String getDnombre() {
 		return dnombre;
 	}
 
-	public void setDnombre(String dnombre)
-	{
+	public void setDnombre(String dnombre) {
 		this.dnombre = dnombre;
 	}
 
-	public String getLoc()
-	{
+	public String getLoc() {
 		return loc;
 	}
 
-	public void setLoc(String loc)
-	{
+	public void setLoc(String loc) {
 		this.loc = loc;
 	}
 
 	@Override
-	public int hashCode()
-	{
+	public int hashCode() {
 		int result = deptNo;
 		result = 31 * result + (dnombre != null ? dnombre.hashCode() : 0);
 		result = 31 * result + (loc != null ? loc.hashCode() : 0);
@@ -65,8 +57,7 @@ public class DepartamentosEntity
 	}
 
 	@Override
-	public boolean equals(Object o)
-	{
+	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 
@@ -79,13 +70,11 @@ public class DepartamentosEntity
 		return true;
 	}
 
-	public Collection<EmpleadosEntity> getEmpleadosByDeptNo()
-	{
+	public Collection<EmpleadosEntity> getEmpleadosByDeptNo() {
 		return empleadosByDeptNo;
 	}
 
-	public void setEmpleadosByDeptNo(Collection<EmpleadosEntity> empleadosByDeptNo)
-	{
+	public void setEmpleadosByDeptNo(Collection<EmpleadosEntity> empleadosByDeptNo) {
 		this.empleadosByDeptNo = empleadosByDeptNo;
 	}
 }

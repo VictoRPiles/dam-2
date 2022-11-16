@@ -9,8 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-public class Contador extends AppCompatActivity
-{
+public class Contador extends AppCompatActivity {
 	private static String CUENTA;
 
 	private TextView textContador;
@@ -23,8 +22,7 @@ public class Contador extends AppCompatActivity
 			valorMinimo = Integer.MIN_VALUE;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_contador);
 
@@ -48,16 +46,14 @@ public class Contador extends AppCompatActivity
 	}
 
 	@Override
-	protected void onSaveInstanceState(@NonNull Bundle outState)
-	{
+	protected void onSaveInstanceState(@NonNull Bundle outState) {
 		super.onSaveInstanceState(outState);
 
 		outState.putInt(CUENTA, cuenta);
 	}
 
 	@Override
-	protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState)
-	{
+	protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
 		super.onRestoreInstanceState(savedInstanceState);
 
 		cuenta = savedInstanceState.getInt(CUENTA, 0);
@@ -70,11 +66,9 @@ public class Contador extends AppCompatActivity
 	/**
 	 * Aumenta el valor de {@link #cuenta}, si no excede {@link #valorMaximo}.
 	 */
-	private final View.OnClickListener btnMasListener = new View.OnClickListener()
-	{
+	private final View.OnClickListener btnMasListener = new View.OnClickListener() {
 		@Override
-		public void onClick(@NonNull View view)
-		{
+		public void onClick(@NonNull View view) {
 			if (cuenta < valorMaximo) {
 				textContador.setText(String.valueOf(++cuenta));
 			}
@@ -83,11 +77,9 @@ public class Contador extends AppCompatActivity
 	/**
 	 * Decrementa el valor de {@link #cuenta}, si no excede {@link #valorMinimo}.
 	 */
-	private final View.OnClickListener btnMenosListener = new View.OnClickListener()
-	{
+	private final View.OnClickListener btnMenosListener = new View.OnClickListener() {
 		@Override
-		public void onClick(@NonNull View view)
-		{
+		public void onClick(@NonNull View view) {
 			if (cuenta > valorMinimo) {
 				textContador.setText(String.valueOf(--cuenta));
 			}
@@ -96,11 +88,9 @@ public class Contador extends AppCompatActivity
 	/**
 	 * Establece el valor de {@link #cuenta} a 0.
 	 */
-	private final View.OnClickListener btnResetListener = new View.OnClickListener()
-	{
+	private final View.OnClickListener btnResetListener = new View.OnClickListener() {
 		@Override
-		public void onClick(@NonNull View view)
-		{
+		public void onClick(@NonNull View view) {
 			cuenta = 0;
 			textContador.setText(String.valueOf(cuenta));
 		}
@@ -110,11 +100,9 @@ public class Contador extends AppCompatActivity
 	 * <p>
 	 * Establece el valor de la cuenta a 50 si excede el {@link #valorMaximo}.
 	 */
-	private final View.OnClickListener checkMaximoListener = new View.OnClickListener()
-	{
+	private final View.OnClickListener checkMaximoListener = new View.OnClickListener() {
 		@Override
-		public void onClick(@NonNull View view)
-		{
+		public void onClick(@NonNull View view) {
 			if (((CheckBox) view).isChecked()) {
 				valorMaximo = 50;
 				/* Reset de la cuenta a 0 si excede el máximo */
@@ -122,8 +110,7 @@ public class Contador extends AppCompatActivity
 					cuenta = 50;
 					textContador.setText(String.valueOf(cuenta));
 				}
-			}
-			else {
+			} else {
 				valorMaximo = Integer.MAX_VALUE;
 			}
 		}
@@ -134,11 +121,9 @@ public class Contador extends AppCompatActivity
 	 * <p>
 	 * Establece el valor de la cuenta a 0 si excede el {@link #valorMinimo}.
 	 */
-	private final View.OnClickListener checkMinimoListener = new View.OnClickListener()
-	{
+	private final View.OnClickListener checkMinimoListener = new View.OnClickListener() {
 		@Override
-		public void onClick(@NonNull View view)
-		{
+		public void onClick(@NonNull View view) {
 			if (((CheckBox) view).isChecked()) {
 				valorMinimo = 0;
 				/* Reset de la cuenta a 0 si excede el mínimo */
@@ -146,8 +131,7 @@ public class Contador extends AppCompatActivity
 					cuenta = 0;
 					textContador.setText(String.valueOf(cuenta));
 				}
-			}
-			else {
+			} else {
 				valorMinimo = Integer.MIN_VALUE;
 			}
 		}
