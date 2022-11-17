@@ -4,20 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8BC34A"
-    tools:context=".CuartoActivity">
+    tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
-        style="@style/cuartoTexto"
+        android:id="@+id/seekBarProgress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/cuartoTexto"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:typeface="normal"
+        android:text="0"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarProgress" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

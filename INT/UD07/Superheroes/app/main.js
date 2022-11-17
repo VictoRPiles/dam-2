@@ -1,4 +1,5 @@
 const {app, BrowserWindow} = require('electron')
+require('@electron/remote/main').initialize()
 const path = require('path')
 
 function createWindow() {
@@ -11,6 +12,9 @@ function createWindow() {
             preload: path.join(__dirname, 'preload.js')
         }
     })
+
+    /* Xel dialog */
+    require('@electron/remote/main').enable(win.webContents)
 
     win.loadFile('app/index.html')
 }

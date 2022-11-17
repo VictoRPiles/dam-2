@@ -3,6 +3,6 @@ project(house_of_the_ramon C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(generacions generacions.c)
-add_executable(agencia-targaryen agencia-targaryen.c)
-add_executable(agencia-martell agencia-martell.c)
+add_executable(generacions src/generacions.c)
+add_executable(agencia-targaryen src/agencia-targaryen.c)
+add_executable(agencia-martell src/agencia-martell.c)

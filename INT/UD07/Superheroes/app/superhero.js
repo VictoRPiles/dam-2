@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-/* ========== DOM ========== */
+/* ==================== DOM ==================== */
 const superheroImg = document.getElementById('img-superhero')
 
 const inputVote = document.getElementById('input-vote')
@@ -15,11 +15,15 @@ const tableAlterData = document.getElementById('td-alter-data')
 const tableAppearanceData = document.getElementById('td-appearance-data')
 const tableCharactersData = document.getElementById('td-characters-data')
 
-/* ========== Read superheroes data ========== */
+const header = document.getElementById('header')
+
+const {dialog} = require('@electron/remote')
+
+/* ==================== Read superheroes data ==================== */
 const rawSuperheroesData = fs.readFileSync('res/data/superheroes.json')
 const jsonSuperheroesData = JSON.parse(rawSuperheroesData.toString())
 
-/* ========== Superhero ========== */
+/* ==================== Superhero ==================== */
 let superheroIndex = 0
 changeSuperhero(superheroIndex)
 
@@ -27,6 +31,8 @@ btnNext.addEventListener('click', () => {
     if (superheroIndex < jsonSuperheroesData.length - 1) {
         superheroIndex++
         changeSuperhero(superheroIndex)
+    } else {
+        dialog.showErrorBox('Warning', 'Last superhero')
     }
 })
 
@@ -34,6 +40,8 @@ btnPrev.addEventListener('click', () => {
     if (superheroIndex > 0) {
         superheroIndex--
         changeSuperhero(superheroIndex)
+    } else {
+        dialog.showErrorBox('Warning', 'First superhero')
     }
 })
 
@@ -46,11 +54,11 @@ function changeSuperhero(index) {
     superheroImg.setAttribute('src', ('../res/img/' + jsonSuperheroesData[index].img))
 }
 
-/* ========== Read votes data ========== */
+/* ==================== Read votes data ==================== */
 const rawVotesData = fs.readFileSync('res/data/votes.json')
 const jsonVotesData = JSON.parse(rawVotesData.toString())
 
-/* ========== Vote ========== */
+/* ==================== Vote ==================== */
 btnVote.addEventListener('click', () => {
     let voteName = inputVote.value.toString()
 
@@ -61,5 +69,23 @@ btnVote.addEventListener('click', () => {
 
     jsonVotesData.push(insert)
 
+    header.innerText = getMostVotedSuperheroName() + ' is the most voted superhero'
+
     fs.writeFileSync('res/data/votes.json', JSON.stringify(jsonVotesData))
 })
+
+function getMostVotedSuperheroName() {
+    let votesCount = Array(jsonSuperheroesData.length).fill(0)
+    jsonVotesData.forEach((vote) => {
+        votesCount[vote.id]++
+    })
+
+    const maxVoted = Math.max(...votesCount)
+    console.log(maxVoted)
+
+    const mostVotedIndex = votesCount.indexOf(maxVoted)
+
+    const mostVotedSuperhero = jsonSuperheroesData[mostVotedIndex]
+    console.log(mostVotedSuperhero)
+    return mostVotedSuperhero.superhero
+}
