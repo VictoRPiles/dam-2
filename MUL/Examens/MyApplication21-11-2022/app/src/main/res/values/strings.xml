@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="bienvenidos">Bienvenidos a mi examen\nVictor Piles</string>
+    <string name="_0">0</string>
+    <string name="mostrar_layout_de_botones">Mostrar layout de botones</string>
+    <string name="button">Button</string>
+</resources>
