@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
+
+	<!-- Photon CSS -->
+	<link rel="stylesheet" href="../css/photon.css">
+
+	<title>Books</title>
+</head>
+<body>
+<div class="window">
+	<!-- Header -->
+	<header class="toolbar toolbar-header">
+		<div class="toolbar-actions">
+			<!-- Update Button -->
+			<button class="btn btn-default pull-right" id="reload-btn">
+				<span class="icon icon-arrows-ccw"></span>
+			</button>
+		</div>
+	</header>
+	<!-- Main -->
+	<div class="window-content">
+		<table class="table-striped">
+			<thead>
+			<tr>
+				<th>Title</th>
+				<th>Portrait</th>
+			</tr>
+			</thead>
+			<tbody id="books-table"><!-- Fill from JS --></tbody>
+		</table>
+		<div class="pull-right padded-more sidebar" id="hidden-container" style="display: none">
+			<h1 class="title">Book details</h1>
+			<div style="display: none" id="book-info">
+				<!-- Fill from JS -->
+				<div class="text-center">
+					<!-- Portrait -->
+					<img class="media-object" src="" width="128" alt="portrait" id="sidebar-portrait">
+				</div>
+				<div class="padded-top">
+					<!-- Form -->
+					<div class="form-group">
+						<label>Title</label>
+						<input type="text" class="form-control" placeholder="Title" id="book-title">
+					</div>
+					<div class="form-group">
+						<label>Author</label>
+						<input type="text" class="form-control" placeholder="Author" id="book-author">
+					</div>
+					<div class="form-group">
+						<label>Price</label>
+						<input type="number" class="form-control" placeholder="Price" id="book-price">
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="book-type" id="book-type-book">
+							Book
+						</label>
+					</div>
+					<div class="radio">
+						<label>
+							<input type="radio" name="book-type" id="book-type-comic">
+							Comic
+						</label>
+					</div>
+				</div>
+				<div class="text-center">
+					<!-- Button -->
+					<button class="btn btn-primary" id="save-btn">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Footer -->
+	<footer class="toolbar toolbar-footer">
+		<h1 class="title">Interfaces Exam</h1>
+	</footer>
+</div>
+<!-- Books JS -->
+<script src="books.js"></script>
+</body>
+</html>

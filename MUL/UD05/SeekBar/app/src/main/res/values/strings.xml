@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SeekBar</string>
+    <string name="color">color</string>
 </resources>

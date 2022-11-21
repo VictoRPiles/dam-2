@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Q",
+    "author": "Luther Blissett",
+    "price": "20",
+    "img": "0.jpg",
+    "eslibro": true
+  },
+  {
+    "title": "El amor en tiempos cólera",
+    "author": "Gabriel García Márquez",
+    "price": "24",
+    "img": "1.jpg",
+    "eslibro": true
+  },
+  {
+    "title": "Watchmen",
+    "author": "Alan Moore y Dave Gibbons",
+    "price": "35",
+    "img": "2.jpg",
+    "eslibro": false
+  },
+  {
+    "title": "54",
+    "author": "Wu Ming",
+    "price": "20",
+    "img": "3.jpg",
+    "eslibro": true
+  },
+  {
+    "title": "El ejército de los sonámbulos",
+    "author": "Wu Ming",
+    "price": "18",
+    "img": "4.jpg",
+    "eslibro": true
+  },
+  {
+    "title": "Maus",
+    "author": "Art Spiegelman",
+    "price": "32",
+    "img": "5.jpg",
+    "eslibro": false
+  },
+  {
+    "title": "El tambor de hojalata",
+    "author": "Günter Grass",
+    "price": "11",
+    "img": "6.jpg",
+    "libro": true
+  },
+  {
+    "title": "Setenta kilos",
+    "author": "Ramón Palomar",
+    "price": "27",
+    "img": "7.jpg",
+    "libro": true
+  },
+  {
+    "title": "Manela es nombre de Tango",
+    "author": "Almudena Grandes",
+    "price": "20",
+    "img": "8.jpg",
+    "libro": true
+  },
+  {
+    "title": "La triología de Nueva York",
+    "author": "Paul Auster",
+    "price": "26",
+    "img": "9.jpg",
+    "libro": true
+  }
+]
