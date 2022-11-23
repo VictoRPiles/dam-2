@@ -6,7 +6,10 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
 
-import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.Date;
+import java.time.Instant;
+import java.time.Year;
+import java.util.Calendar;
 import java.util.Scanner;
 
 /**
@@ -24,7 +27,7 @@ public class App {
 
 		System.out.println("(INFO) Creating Hibernate session...");
 		this.session = HibernateUtil.getSessionFactory().openSession();
-		this.transaction = session.beginTransaction();
+		this.transaction = session.beginTransaction(); // TODO: 22/11/2022 Obrir la transacció només quan es va a gastar
 	}
 
 	/**
@@ -51,22 +54,22 @@ public class App {
 				createDepartment();
 			}
 			case 5 -> {
-				// TODO: 21/11/2022
+				createTeacherAndDepartment();
 			}
 			case 6 -> {
-				// TODO: 21/11/2022
+				createTeacherInExistingDepartment();
 			}
 			case 7 -> {
-				// TODO: 21/11/2022
+				deleteTeacher();
 			}
 			case 8 -> {
-				// TODO: 21/11/2022
+				deleteDepartment();
 			}
 			case 9 -> {
-				// TODO: 21/11/2022
+				setSalaryOfDepartment();
 			}
 			case 10 -> {
-				// TODO: 21/11/2022
+				riseSalaryOfDepartmentSeniors();
 			}
 			default -> {
 				// TODO: 21/11/2022
@@ -77,7 +80,7 @@ public class App {
 	/**
 	 * Print the {@link DepartmentsEntity department} with the requested {@link DepartmentsEntity#getDeptNum() deptNum}.
 	 * <p>
-	 * Print an error message if does not exist.
+	 * Print an error message if it does not exist.
 	 *
 	 * @see DepartmentsEntity#toString()
 	 */
@@ -101,7 +104,7 @@ public class App {
 	/**
 	 * Print the {@link TeachersEntity teacher} with the requested {@link TeachersEntity#getId()} id}.
 	 * <p>
-	 * Print an error message if does not exist.
+	 * Print an error message if it does not exist.
 	 *
 	 * @see TeachersEntity#toString()
 	 */
@@ -182,6 +185,234 @@ public class App {
 			transaction.commit();
 		} catch (PersistenceException e) {
 			System.out.println("(ERROR) Can't insert " + department + ".");
+			transaction.rollback();
+		}
+	}
+
+
+	/**
+	 * Creates a {@link DepartmentsEntity department} and a {@link TeachersEntity teacher} from the data requested.
+	 */
+	private void createTeacherAndDepartment() {
+		Scanner scanner = new Scanner(System.in);
+
+		int id, salary;
+		String teacherName, surname, email;
+		Date startDate;
+
+		int deptNum;
+		String departmentName;
+		String office;
+
+		System.out.println("Department");
+		System.out.print("Department number: ");
+		deptNum = scanner.nextInt();
+		scanner.nextLine(); /* flush buffer */
+		System.out.print("Department name: ");
+		departmentName = scanner.nextLine();
+		System.out.print("Department office: ");
+		office = scanner.nextLine();
+
+		System.out.println("Teacher");
+		System.out.print("Teacher ID: ");
+		id = scanner.nextInt();
+		scanner.nextLine(); /* flush buffer */
+		System.out.print("Teacher name: ");
+		teacherName = scanner.nextLine();
+		System.out.print("Teacher surname: ");
+		surname = scanner.nextLine();
+		System.out.print("Teacher email: ");
+		email = scanner.nextLine();
+		System.out.print("Teacher date (YYYY-MM-DD): ");
+		startDate = Date.valueOf(scanner.nextLine());
+		System.out.print("Teacher salary: ");
+		salary = scanner.nextInt();
+
+		DepartmentsEntity department = new DepartmentsEntity(deptNum, departmentName, office);
+		TeachersEntity teacher = new TeachersEntity(id, teacherName, surname, email, startDate, deptNum, salary);
+
+		session.persist(department);
+		System.out.println("Inserting " + department + "...");
+		session.persist(teacher);
+		System.out.println("Inserting " + teacher + "...");
+		try {
+			transaction.commit();
+		} catch (PersistenceException e) {
+			System.out.println("(ERROR) Can't insert " + teacher + ".");
+			System.out.println("(ERROR) Can't insert " + department + ".");
+			transaction.rollback();
+		}
+	}
+
+	/**
+	 * Creates a new {@link TeachersEntity teacher} with the requested data.
+	 * <p>
+	 * If the {@link TeachersEntity#getDeptNum() department number} is not a valid {@link DepartmentsEntity#getDeptNum() foreign key},
+	 * the {@link TeachersEntity teacher} will not be persisted.
+	 */
+	private void createTeacherInExistingDepartment() {
+		Scanner scanner = new Scanner(System.in);
+		int id, deptNum, salary;
+		String name, surname, email;
+		Date startDate;
+
+		System.out.print("Teacher ID: ");
+		id = scanner.nextInt();
+		scanner.nextLine(); /* flush buffer */
+		System.out.print("Teacher name: ");
+		name = scanner.nextLine();
+		System.out.print("Teacher surname: ");
+		surname = scanner.nextLine();
+		System.out.print("Teacher email: ");
+		email = scanner.nextLine();
+		System.out.print("Teacher date (YYYY-MM-DD): ");
+		startDate = Date.valueOf(scanner.nextLine());
+		System.out.print("Teacher department number: ");
+		deptNum = scanner.nextInt();
+		System.out.print("Teacher salary: ");
+		salary = scanner.nextInt();
+
+		TeachersEntity teacher = new TeachersEntity(id, name, surname, email, startDate, deptNum, salary);
+		System.out.println("Inserting " + teacher + "...");
+
+		if ((session.get(DepartmentsEntity.class, teacher.getDeptNum())) == null) {
+			System.out.println("(ERROR) No such department.");
+			return;
+		}
+
+		session.persist(teacher);
+		try {
+			transaction.commit();
+		} catch (PersistenceException e) {
+			System.out.println("(ERROR) Can't insert " + teacher + ".");
+			transaction.rollback();
+		}
+	}
+
+	/**
+	 * Deletes, if exists, the {@link TeachersEntity teacher} with the requested {@link TeachersEntity#getId() id}.
+	 */
+	private void deleteTeacher() {
+		Scanner scanner = new Scanner(System.in);
+		int id;
+		TeachersEntity teacher;
+
+		System.out.print("Teacher ID: ");
+		id = scanner.nextInt();
+
+		if ((teacher = session.get(TeachersEntity.class, id)) == null) {
+			System.out.println("(ERROR) No such teacher.");
+			return;
+		}
+
+		session.remove(teacher);
+		try {
+			transaction.commit();
+		} catch (PersistenceException e) {
+			System.out.println("(ERROR) Can't delete " + teacher + ".");
+			transaction.rollback();
+		}
+	}
+
+	/**
+	 * Deletes, if exists, the {@link DepartmentsEntity department} with the requested ç
+	 * {@link DepartmentsEntity#getDeptNum() department number}.
+	 */
+	private void deleteDepartment() {
+		Scanner scanner = new Scanner(System.in);
+		int deptNum;
+		DepartmentsEntity department;
+
+		System.out.print("Department number: ");
+		deptNum = scanner.nextInt();
+
+		if ((department = session.get(DepartmentsEntity.class, deptNum)) == null) {
+			System.out.println("(ERROR) No such department.");
+			return;
+		}
+
+		session.remove(department);
+		try {
+			transaction.commit();
+		} catch (PersistenceException e) {
+			System.out.println("(ERROR) Can't delete " + department + ".");
+			transaction.rollback();
+		}
+	}
+
+	/**
+	 * Updates the {@link TeachersEntity#setSalary(Integer) salary} to the requested salary for each {@link TeachersEntity teacher} of the {@link DepartmentsEntity department},
+	 * with the requested {@link DepartmentsEntity#getDeptNum() department number}.
+	 */
+	private void setSalaryOfDepartment() {
+		Scanner scanner = new Scanner(System.in);
+		int deptNum, salary;
+		DepartmentsEntity department;
+
+		System.out.print("Department number: ");
+		deptNum = scanner.nextInt();
+
+		System.out.print("New salary: ");
+		salary = scanner.nextInt();
+
+		if ((department = session.get(DepartmentsEntity.class, deptNum)) == null) {
+			System.out.println("(ERROR) No such department.");
+			return;
+		}
+
+		System.out.println("Updating salary to " + salary + " for:");
+		for (TeachersEntity teacher : department.getTeachersByDeptNum()) {
+			teacher.setSalary(salary);
+			System.out.println(teacher);
+		}
+
+		try {
+			transaction.commit();
+		} catch (PersistenceException e) {
+			System.out.println("(ERROR) Can't update salary for " + department + ".");
+			transaction.rollback();
+		}
+	}
+
+	/**
+	 * Rises the {@link TeachersEntity#getSalary() salary} by a % of each {@link TeachersEntity teacher} of a {@link DepartmentsEntity department}.
+	 */
+	private void riseSalaryOfDepartmentSeniors() {
+		Scanner scanner = new Scanner(System.in);
+		int deptNum, salary, years;
+		DepartmentsEntity department;
+
+		System.out.print("Department number: ");
+		deptNum = scanner.nextInt();
+
+		System.out.print("New salary %: ");
+		salary = scanner.nextInt();
+
+		System.out.print("Years for senior: ");
+		years = scanner.nextInt();
+
+		if ((department = session.get(DepartmentsEntity.class, deptNum)) == null) {
+			System.out.println("(ERROR) No such department.");
+			return;
+		}
+
+		System.out.println("Updating salary to " + salary + "% for:");
+		for (TeachersEntity teacher : department.getTeachersByDeptNum()) {
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(teacher.getStartDate());
+			int currentYear = Year.now().getValue();
+			if (cal.get(Calendar.YEAR) > (currentYear - years)) {
+				continue;
+			}
+			teacher.setSalary(teacher.getSalary() + (teacher.getSalary() * (salary / 100)));
+			System.out.println(teacher);
+		}
+
+		try {
+			transaction.commit();
+		} catch (PersistenceException e) {
+			System.out.println("(ERROR) Can't update salary for " + department + ".");
+			transaction.rollback();
 		}
 	}
 

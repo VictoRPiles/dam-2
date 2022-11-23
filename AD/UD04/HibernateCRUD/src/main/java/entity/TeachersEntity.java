@@ -34,6 +34,19 @@ public class TeachersEntity {
 	@Column(name = "salary")
 	private Integer salary;
 
+	public TeachersEntity() {
+	}
+
+	public TeachersEntity(int id, String name, String surname, String email, Date startDate, Integer deptNum, Integer salary) {
+		this.id = id;
+		this.name = name;
+		this.surname = surname;
+		this.email = email;
+		this.startDate = startDate;
+		this.deptNum = deptNum;
+		this.salary = salary;
+	}
+
 	public int getId() {
 		return id;
 	}
