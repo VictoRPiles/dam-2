@@ -1,6 +1,7 @@
 # Linguist Ignored
 photon.css linguist-vendored 
 bootstrap* linguist-vendored
+javadoc* linguist-vendored
 
 # Java sources
 *.java          text diff=java
