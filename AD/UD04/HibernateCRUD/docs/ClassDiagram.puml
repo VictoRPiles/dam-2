@@ -38,7 +38,10 @@ class App {
 - Session session
 - Transaction transaction
 + <<Create>> App()
-- {static} void printWelcomeMessage()
+- void close()
+- TeachersEntity createNewTeacherEntity()
+- TeachersEntity createNewTeacherEntityWithoutDepartment()
+- DepartmentsEntity createNewDepartmentEntity()
 - void runOption(int)
 - void showDepartment()
 - void showTeacher()
@@ -50,7 +53,7 @@ class App {
 - void deleteDepartment()
 - void setSalaryOfDepartment()
 - void riseSalaryOfDepartmentSeniors()
-- void close()
+- {static} void printWelcomeMessage()
 + {static} void main(String[])
 }
 class menu.AppMenu {
@@ -77,6 +80,7 @@ abstract class util.HibernateUtil {
 - {static} SessionFactory factory
 + {static} SessionFactory getSessionFactory()
 }
+
 
 menu.Menu <|-- menu.AppMenu
 

@@ -22,6 +22,8 @@ public class App {
 	private final Session session;
 	private Transaction transaction;
 
+	/* ==================== Session ==================== */
+
 	/**
 	 * Initializes the {@link Session}.
 	 *
@@ -35,13 +37,85 @@ public class App {
 	}
 
 	/**
-	 * Prints the program header.
+	 * Closes the {@link #session} and prints a message.
+	 *
+	 * @see Session#close()
 	 */
-	private static void printWelcomeMessage() {
-		System.out.println("======================================");
-		System.out.println("  Act4.2 CRUD with Hibernate objects  ");
-		System.out.println("======================================");
+	private void close() {
+		System.out.println("(INFO) Closing Hibernate session...");
+		session.close();
 	}
+
+	/* ==================== Create entities ==================== */
+
+	private TeachersEntity createNewTeacherEntity() {
+		Scanner scanner = new Scanner(System.in);
+		int id, deptNum, salary;
+		String name, surname, email;
+		Date startDate;
+
+		System.out.print("Teacher ID: ");
+		id = scanner.nextInt();
+		scanner.nextLine(); /* flush buffer */
+		System.out.print("Teacher name: ");
+		name = scanner.nextLine();
+		System.out.print("Teacher surname: ");
+		surname = scanner.nextLine();
+		System.out.print("Teacher email: ");
+		email = scanner.nextLine();
+		System.out.print("Teacher date (YYYY-MM-DD): ");
+		startDate = Date.valueOf(scanner.nextLine());
+		System.out.print("Teacher department number: ");
+		deptNum = scanner.nextInt();
+		System.out.print("Teacher salary: ");
+		salary = scanner.nextInt();
+
+		return new TeachersEntity(id, name, surname, email, startDate, deptNum, salary);
+	}
+
+	private TeachersEntity createNewTeacherEntityWithoutDepartment() {
+		Scanner scanner = new Scanner(System.in);
+		int id, salary;
+		String teacherName, surname, email;
+		Date startDate;
+
+		System.out.println("Teacher");
+		System.out.print("Teacher ID: ");
+		id = scanner.nextInt();
+		scanner.nextLine(); /* flush buffer */
+		System.out.print("Teacher name: ");
+		teacherName = scanner.nextLine();
+		System.out.print("Teacher surname: ");
+		surname = scanner.nextLine();
+		System.out.print("Teacher email: ");
+		email = scanner.nextLine();
+		System.out.print("Teacher date (YYYY-MM-DD): ");
+		startDate = Date.valueOf(scanner.nextLine());
+		System.out.print("Teacher salary: ");
+		salary = scanner.nextInt();
+
+		return new TeachersEntity(id, teacherName, surname, email, startDate, null, salary);
+	}
+
+	private DepartmentsEntity createNewDepartmentEntity() {
+		Scanner scanner = new Scanner(System.in);
+		int deptNum;
+		String departmentName;
+		String office;
+
+		System.out.println("Department");
+		System.out.print("Department number: ");
+		deptNum = scanner.nextInt();
+		scanner.nextLine(); /* flush buffer */
+		System.out.print("Department name: ");
+		departmentName = scanner.nextLine();
+		System.out.print("Department office: ");
+		office = scanner.nextLine();
+
+		return new DepartmentsEntity(deptNum, departmentName, office);
+	}
+
+	/* ==================== Options / Program logic ==================== */
 
 	/**
 	 * Evaluates the option and calls the corresponding method.
@@ -60,7 +134,7 @@ public class App {
 			case 8 -> deleteDepartment();
 			case 9 -> setSalaryOfDepartment();
 			case 10 -> riseSalaryOfDepartmentSeniors();
-			default -> System.out.println("(ERROR) Invalid option.");
+			default -> System.out.println("(INFO) Closing program...");
 		}
 	}
 
@@ -152,20 +226,8 @@ public class App {
 	 * a new {@link DepartmentsEntity} with the requested data.
 	 */
 	private void createDepartment() {
-		Scanner scanner = new Scanner(System.in);
-		int deptNum;
-		String name;
-		String office;
+		DepartmentsEntity department = createNewDepartmentEntity();
 
-		System.out.print("Department number: ");
-		deptNum = scanner.nextInt();
-		scanner.nextLine(); /* flush buffer */
-		System.out.print("Department name: ");
-		name = scanner.nextLine();
-		System.out.print("Department office: ");
-		office = scanner.nextLine();
-
-		DepartmentsEntity department = new DepartmentsEntity(deptNum, name, office);
 		System.out.println("Inserting " + department + "...");
 		session.persist(department);
 		try {
@@ -177,47 +239,14 @@ public class App {
 		}
 	}
 
-
 	/**
 	 * Creates a {@link DepartmentsEntity department} and a {@link TeachersEntity teacher} from the data requested.
 	 */
 	private void createTeacherAndDepartment() {
-		Scanner scanner = new Scanner(System.in);
+		DepartmentsEntity department = createNewDepartmentEntity();
+		TeachersEntity teacher = createNewTeacherEntityWithoutDepartment();
 
-		int id, salary;
-		String teacherName, surname, email;
-		Date startDate;
-
-		int deptNum;
-		String departmentName;
-		String office;
-
-		System.out.println("Department");
-		System.out.print("Department number: ");
-		deptNum = scanner.nextInt();
-		scanner.nextLine(); /* flush buffer */
-		System.out.print("Department name: ");
-		departmentName = scanner.nextLine();
-		System.out.print("Department office: ");
-		office = scanner.nextLine();
-
-		System.out.println("Teacher");
-		System.out.print("Teacher ID: ");
-		id = scanner.nextInt();
-		scanner.nextLine(); /* flush buffer */
-		System.out.print("Teacher name: ");
-		teacherName = scanner.nextLine();
-		System.out.print("Teacher surname: ");
-		surname = scanner.nextLine();
-		System.out.print("Teacher email: ");
-		email = scanner.nextLine();
-		System.out.print("Teacher date (YYYY-MM-DD): ");
-		startDate = Date.valueOf(scanner.nextLine());
-		System.out.print("Teacher salary: ");
-		salary = scanner.nextInt();
-
-		DepartmentsEntity department = new DepartmentsEntity(deptNum, departmentName, office);
-		TeachersEntity teacher = new TeachersEntity(id, teacherName, surname, email, startDate, deptNum, salary);
+		teacher.setDeptNum(department.getDeptNum());
 
 		session.persist(department);
 		System.out.println("Inserting " + department + "...");
@@ -240,28 +269,7 @@ public class App {
 	 * the {@link TeachersEntity teacher} will not be persisted.
 	 */
 	private void createTeacherInExistingDepartment() {
-		Scanner scanner = new Scanner(System.in);
-		int id, deptNum, salary;
-		String name, surname, email;
-		Date startDate;
-
-		System.out.print("Teacher ID: ");
-		id = scanner.nextInt();
-		scanner.nextLine(); /* flush buffer */
-		System.out.print("Teacher name: ");
-		name = scanner.nextLine();
-		System.out.print("Teacher surname: ");
-		surname = scanner.nextLine();
-		System.out.print("Teacher email: ");
-		email = scanner.nextLine();
-		System.out.print("Teacher date (YYYY-MM-DD): ");
-		startDate = Date.valueOf(scanner.nextLine());
-		System.out.print("Teacher department number: ");
-		deptNum = scanner.nextInt();
-		System.out.print("Teacher salary: ");
-		salary = scanner.nextInt();
-
-		TeachersEntity teacher = new TeachersEntity(id, name, surname, email, startDate, deptNum, salary);
+		TeachersEntity teacher = createNewTeacherEntity();
 		System.out.println("Inserting " + teacher + "...");
 
 		if ((session.get(DepartmentsEntity.class, teacher.getDeptNum())) == null) {
@@ -414,14 +422,15 @@ public class App {
 		}
 	}
 
+	/* ==================== Main program ==================== */
+
 	/**
-	 * Closes the {@link #session} and prints a message.
-	 *
-	 * @see Session#close()
+	 * Prints the program header.
 	 */
-	private void close() {
-		System.out.println("(INFO) Closing Hibernate session...");
-		session.close();
+	private static void printWelcomeMessage() {
+		System.out.println("======================================");
+		System.out.println("  Act4.2 CRUD with Hibernate objects  ");
+		System.out.println("======================================");
 	}
 
 	public static void main(String[] args) {
