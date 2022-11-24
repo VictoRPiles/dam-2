@@ -1,4 +1,3 @@
-const fs = require('fs')
 /* HTML Elements */
 const table = document.getElementById('books-table')
 const reloadBtn = document.getElementById('reload-btn')
@@ -82,17 +81,3 @@ function clickablePortraits() {
 		})
 	}
 }
-
-/**
- * Saves the updated info to the JSON.
- */
-saveBtn.addEventListener('click', () => {
-	booksJson[thisBookId].title = sidebarBookTitle.value
-	booksJson[thisBookId].author = sidebarBookAuthor.value
-	booksJson[thisBookId].price = sidebarBookPrice.value
-	booksJson[thisBookId].libro = sidebarBookIsBook.checked
-
-	console.log(booksJson)
-	//TODO
-	fs.writeFileSync('../res/data/books.json', booksJson)
-})

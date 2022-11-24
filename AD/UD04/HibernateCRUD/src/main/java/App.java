@@ -7,7 +7,6 @@ import org.hibernate.Transaction;
 import util.HibernateUtil;
 
 import java.sql.Date;
-import java.time.Instant;
 import java.time.Year;
 import java.util.Calendar;
 import java.util.Scanner;
@@ -15,19 +14,24 @@ import java.util.Scanner;
 /**
  * @author Victor Piles
  */
+@SuppressWarnings("DuplicatedCode")
 public class App {
 
 	private final AppMenu menu;
 
 	private final Session session;
-	private final Transaction transaction;
+	private Transaction transaction;
 
+	/**
+	 * Initializes the {@link Session}.
+	 *
+	 * @see HibernateUtil#getSessionFactory()
+	 */
 	public App() {
 		this.menu = new AppMenu();
 
 		System.out.println("(INFO) Creating Hibernate session...");
 		this.session = HibernateUtil.getSessionFactory().openSession();
-		this.transaction = session.beginTransaction(); // TODO: 22/11/2022 Obrir la transacció només quan es va a gastar
 	}
 
 	/**
@@ -39,41 +43,24 @@ public class App {
 		System.out.println("======================================");
 	}
 
+	/**
+	 * Evaluates the option and calls the corresponding method.
+	 *
+	 * @param option The option.
+	 */
 	private void runOption(int option) {
 		switch (option) {
-			case 1 -> {
-				showDepartment();
-			}
-			case 2 -> {
-				showTeacher();
-			}
-			case 3 -> {
-				showTeachersInDepartment();
-			}
-			case 4 -> {
-				createDepartment();
-			}
-			case 5 -> {
-				createTeacherAndDepartment();
-			}
-			case 6 -> {
-				createTeacherInExistingDepartment();
-			}
-			case 7 -> {
-				deleteTeacher();
-			}
-			case 8 -> {
-				deleteDepartment();
-			}
-			case 9 -> {
-				setSalaryOfDepartment();
-			}
-			case 10 -> {
-				riseSalaryOfDepartmentSeniors();
-			}
-			default -> {
-				// TODO: 21/11/2022
-			}
+			case 1 -> showDepartment();
+			case 2 -> showTeacher();
+			case 3 -> showTeachersInDepartment();
+			case 4 -> createDepartment();
+			case 5 -> createTeacherAndDepartment();
+			case 6 -> createTeacherInExistingDepartment();
+			case 7 -> deleteTeacher();
+			case 8 -> deleteDepartment();
+			case 9 -> setSalaryOfDepartment();
+			case 10 -> riseSalaryOfDepartmentSeniors();
+			default -> System.out.println("(ERROR) Invalid option.");
 		}
 	}
 
@@ -182,6 +169,7 @@ public class App {
 		System.out.println("Inserting " + department + "...");
 		session.persist(department);
 		try {
+			transaction = session.beginTransaction();
 			transaction.commit();
 		} catch (PersistenceException e) {
 			System.out.println("(ERROR) Can't insert " + department + ".");
@@ -236,6 +224,7 @@ public class App {
 		session.persist(teacher);
 		System.out.println("Inserting " + teacher + "...");
 		try {
+			transaction = session.beginTransaction();
 			transaction.commit();
 		} catch (PersistenceException e) {
 			System.out.println("(ERROR) Can't insert " + teacher + ".");
@@ -282,6 +271,7 @@ public class App {
 
 		session.persist(teacher);
 		try {
+			transaction = session.beginTransaction();
 			transaction.commit();
 		} catch (PersistenceException e) {
 			System.out.println("(ERROR) Can't insert " + teacher + ".");
@@ -305,8 +295,11 @@ public class App {
 			return;
 		}
 
+		System.out.println("Deleting " + teacher);
+
 		session.remove(teacher);
 		try {
+			transaction = session.beginTransaction();
 			transaction.commit();
 		} catch (PersistenceException e) {
 			System.out.println("(ERROR) Can't delete " + teacher + ".");
@@ -331,8 +324,11 @@ public class App {
 			return;
 		}
 
+		System.out.println("Deleting " + department);
+
 		session.remove(department);
 		try {
+			transaction = session.beginTransaction();
 			transaction.commit();
 		} catch (PersistenceException e) {
 			System.out.println("(ERROR) Can't delete " + department + ".");
@@ -367,6 +363,7 @@ public class App {
 		}
 
 		try {
+			transaction = session.beginTransaction();
 			transaction.commit();
 		} catch (PersistenceException e) {
 			System.out.println("(ERROR) Can't update salary for " + department + ".");
@@ -385,7 +382,7 @@ public class App {
 		System.out.print("Department number: ");
 		deptNum = scanner.nextInt();
 
-		System.out.print("New salary %: ");
+		System.out.print("Rise salary %: ");
 		salary = scanner.nextInt();
 
 		System.out.print("Years for senior: ");
@@ -404,11 +401,12 @@ public class App {
 			if (cal.get(Calendar.YEAR) > (currentYear - years)) {
 				continue;
 			}
-			teacher.setSalary(teacher.getSalary() + (teacher.getSalary() * (salary / 100)));
+			teacher.setSalary((int) (teacher.getSalary() + (teacher.getSalary() * (salary / 100f))));
 			System.out.println(teacher);
 		}
 
 		try {
+			transaction = session.beginTransaction();
 			transaction.commit();
 		} catch (PersistenceException e) {
 			System.out.println("(ERROR) Can't update salary for " + department + ".");

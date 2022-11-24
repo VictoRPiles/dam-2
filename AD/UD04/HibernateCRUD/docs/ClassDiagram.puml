@@ -1,0 +1,87 @@
+@startuml
+class entity.TeachersEntity {
+- int id
+- String name
+- String surname
+- String email
+- Date startDate
+- Integer deptNum
+- Integer salary
++ <<Create>> TeachersEntity()
++ <<Create>> TeachersEntity(int,String,String,String,Date,Integer,Integer)
++ int getId()
++ void setId(int)
++ String getName()
++ void setName(String)
++ String getSurname()
++ void setSurname(String)
++ String getEmail()
++ void setEmail(String)
++ Date getStartDate()
++ void setStartDate(Date)
++ Integer getDeptNum()
++ void setDeptNum(Integer)
++ Integer getSalary()
++ void setSalary(Integer)
++ String toString()
+}
+abstract class menu.Menu {
+- HashMap<Integer,String> options
++ boolean addOption(int,String)
++ boolean containsOptionWithKey(int)
++ int inputMenuOption()
++ HashMap<Integer,String> getOptions()
++ String toString()
+}
+class App {
+- AppMenu menu
+- Session session
+- Transaction transaction
++ <<Create>> App()
+- {static} void printWelcomeMessage()
+- void runOption(int)
+- void showDepartment()
+- void showTeacher()
+- void showTeachersInDepartment()
+- void createDepartment()
+- void createTeacherAndDepartment()
+- void createTeacherInExistingDepartment()
+- void deleteTeacher()
+- void deleteDepartment()
+- void setSalaryOfDepartment()
+- void riseSalaryOfDepartmentSeniors()
+- void close()
++ {static} void main(String[])
+}
+class menu.AppMenu {
++ <<Create>> AppMenu()
+}
+class entity.DepartmentsEntity {
+- int deptNum
+- String name
+- String office
+- Collection<TeachersEntity> teachersByDeptNum
++ <<Create>> DepartmentsEntity()
++ <<Create>> DepartmentsEntity(int,String,String)
++ int getDeptNum()
++ void setDeptNum(int)
++ String getName()
++ void setName(String)
++ String getOffice()
++ void setOffice(String)
++ Collection<TeachersEntity> getTeachersByDeptNum()
++ void setTeachersByDeptNum(Collection<TeachersEntity>)
++ String toString()
+}
+abstract class util.HibernateUtil {
+- {static} SessionFactory factory
++ {static} SessionFactory getSessionFactory()
+}
+
+menu.Menu <|-- menu.AppMenu
+
+App -- menu.AppMenu
+App -- entity.DepartmentsEntity
+App -- entity.TeachersEntity
+App -- util.HibernateUtil
+@enduml
