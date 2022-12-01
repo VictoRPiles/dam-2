@@ -1,0 +1,16 @@
+{
+  "name": "examen25-11-22",
+  "version": "1.0.0",
+  "main": "app/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@electron/remote": "^2.0.8",
+    "electron": "^21.3.1"
+  }
+}

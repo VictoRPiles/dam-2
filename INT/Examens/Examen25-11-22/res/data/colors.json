@@ -1,0 +1,30 @@
+[
+  {
+    "genre": "Action",
+    "color": "#6529d4"
+  },
+  {
+    "genre": "Adventure",
+    "color": "#f61212"
+  },
+  {
+    "genre": "Drama",
+    "color": "#fc5826"
+  },
+  {
+    "genre": "Romance",
+    "color": "#e7136f"
+  },
+  {
+    "genre": "Thriller",
+    "color": "#6529d4"
+  },
+  {
+    "genre": "Action",
+    "color": "#080101"
+  },
+  {
+    "genre": "Biography",
+    "color": "#c4f72c"
+  }
+]

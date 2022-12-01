@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
+
+	<!-- Photon CSS -->
+	<link rel="stylesheet" href="../css/photon.css">
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../css/styles.css">
+
+	<title>Movies</title>
+</head>
+<body>
+<div class="window">
+	<!-- Header -->
+	<header class="toolbar toolbar-header">
+		<h1 class="title">Movies</h1>
+	</header>
+	<!-- Main -->
+	<div class="window-content">
+		<div class="content">
+			<!-- Title -->
+			<div class="section section-sm">
+				<div>
+					<!-- Name -->
+					<h1 class="section-title" id="title">Title</h1>
+					<!-- Subsection -->
+					<div class="subsection subsection-p">
+						<!-- Time -->
+						<div class="left">
+							<span class="icon icon-clock"></span>
+							<span class="padded-horizontally-less" id="time">Time</span>
+						</div>
+						<!-- Rating -->
+						<div class="right">
+							<span class="icon icon-thumbs-up right"></span>
+							<span class="padded-horizontally-less" id="rating">Rating</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Portrait -->
+			<div class="section section-lg section-img">
+				<img class="portrait" src="../res/img/0.jpg" alt="portrait" id="portrait">
+			</div>
+			<!-- Description -->
+			<div class="section">
+				<!-- Categories -->
+				<div class="subsection subsection-p" id="categories-subsection">
+					<!-- Records from JS -->
+				</div>
+				<!-- Text -->
+				<hr>
+				<p class="section-p" id="description">Lorem Ipsum is simply dummy text of the printing and typesetting
+					industry. Lorem
+					Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+				<hr>
+				<!-- Button -->
+				<div class="center">
+					<button class="btn btn-warning padded-bottom" id="btn-visit-movie">Visit movie</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Movies JS -->
+<script src="movies.js"></script>
+</body>
+</html>
