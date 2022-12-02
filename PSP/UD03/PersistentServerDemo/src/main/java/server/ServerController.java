@@ -23,7 +23,7 @@ public abstract class ServerController {
 				count++;
 				System.out.println("[Server] (INFO) Client " + count + ": " + client);
 				server.setOutput(new DataOutputStream(client.getOutputStream()));
-				server.getOutput().writeUTF("[Server] Hello you are the client number " + count);
+				server.getOutput().writeUTF("[Server] Hello!, you are the client number " + count);
 			}
 		} catch (IOException e) {
 			System.out.println("[Server] (ERROR) " + e.getMessage());
