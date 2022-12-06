@@ -18,10 +18,14 @@ public class App {
 		menu = new Menu();
 		session = HibernateUtil.getSessionFactory().openSession();
 
+		// Provide the Query classes with a session
 		TeachersQuery.session = session;
 		DepartmentsQuery.session = session;
 	}
 
+	/**
+	 * Closes the {@link #session session}.
+	 */
 	public static void close() {
 		if (session.isOpen()) session.close();
 	}
@@ -39,9 +43,27 @@ public class App {
 			// Evaluate the option
 			switch (option) {
 				case 1:
-					// TODO: 5/12/2022
+					// For each department
+					for (DepartmentsEntity department : DepartmentsQuery.getAllDepartments()) {
+						DepartmentsQuery.showDepartment(department);
+					}
 					break;
-				case 2: // TODO: 5/12/2022
+				case 2:
+					// Request department name
+					System.out.print("Department name: ");
+					String name = scanner.next();
+
+					// Get the department
+					DepartmentsEntity departmentByName = DepartmentsQuery.getDepartmentByName(name);
+
+					// If no department found
+					if (departmentByName == null) {
+						System.err.println("There is no department that matches the name " + name);
+						break;
+					}
+
+					DepartmentsQuery.showDepartment(departmentByName);
+					break;
 				case 3: // TODO: 5/12/2022
 				case 4: // TODO: 5/12/2022
 				case 5: // TODO: 5/12/2022
@@ -70,6 +92,9 @@ public class App {
 		 * Prints the program menu.
 		 */
 		void show() {
+			System.out.println("===============================");
+			System.out.println("    Act4.3 Queries with HQL    ");
+			System.out.println("===============================");
 			// @formatter:off
 			System.out.println(
 					"1. Show all departments\n" +
