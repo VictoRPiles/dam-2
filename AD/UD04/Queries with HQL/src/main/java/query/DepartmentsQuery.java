@@ -1,6 +1,7 @@
 package query;
 
 import entity.DepartmentsEntity;
+import entity.TeachersEntity;
 import org.hibernate.NonUniqueResultException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -12,7 +13,10 @@ import java.util.HashMap;
  */
 public class DepartmentsQuery {
 
-	public static Session session;
+	/**
+	 * The Hibernate session.
+	 */
+	private static Session session;
 
 	/**
 	 * Prints in the console the {@link DepartmentsEntity#getDeptNum() department number}, the
@@ -22,19 +26,19 @@ public class DepartmentsQuery {
 	 * @param department The department.
 	 */
 	public static void showDepartment(DepartmentsEntity department) {
-		// @formatter:off
-		System.out.println(
-				"DeptNum: " + department.getDeptNum() + "\n" +
-				"Name: " + department.getName() + "\n" +
-				"Teachers Count: " + department.getTeachersByDeptNum().size()
-		);
-		// @formatter:on
+		// Ensure the data is refreshed
+		session.refresh(department);
+
+		System.out.printf("DeptNum: %d\nName: %s\nTeachers Count: %d%n",
+				department.getDeptNum(), department.getName(), department.getTeachersByDeptNum().size());
 	}
 
 	/**
 	 * Uses a {@link Query query} in HQL to retrieve all {@link DepartmentsEntity departments}.
 	 *
 	 * @return All {@link DepartmentsEntity departments}.
+	 *
+	 * @see DepartmentsQuery#showDepartment(DepartmentsEntity)
 	 */
 	public static DepartmentsEntity[] getAllDepartments() {
 		/*
@@ -60,7 +64,8 @@ public class DepartmentsQuery {
 	 * <p>
 	 * Use parameters with the :name syntax. Use {@link Query#uniqueResult()}.
 	 * <p>
-	 * Be careful if several results are returned, catch the exception and return only the first result.
+	 * Be careful if several results are returned, catch the {@link NonUniqueResultException exception} and return only
+	 * the first result.
 	 *
 	 * @param patternName The pattern with the name.
 	 *
@@ -70,26 +75,91 @@ public class DepartmentsQuery {
 	 * @see Query#uniqueResult()
 	 */
 	public static DepartmentsEntity getDepartmentByName(String patternName) {
-		String hql = "from DepartmentsEntity where name like '" + patternName + "'";
+		String hql = "from DepartmentsEntity where name like :name";
 
-		Query<DepartmentsEntity> query = session.createQuery(hql, DepartmentsEntity.class);
+		Query<DepartmentsEntity> query = session
+				.createQuery(hql, DepartmentsEntity.class)
+				.setParameter("name", patternName);
 		System.out.println("HQL: " + query.getQueryString());
 
 		try {
 			return query.uniqueResult();
 		} catch (NonUniqueResultException e) {
-			System.err.println("Multiples departments match the name " + patternName);
+			System.out.println("Multiples departments match the name " + patternName);
 			return query.setMaxResults(1).uniqueResult();
 		}
 	}
 
+	/**
+	 * Uses a {@link Query query} in HQL to obtain the average {@link TeachersEntity#getSalary() salary} of the
+	 * {@link DepartmentsEntity department} whose {@link DepartmentsEntity#getName() name} is THE SAME AS the name
+	 * introduced as argument.
+	 * <p>
+	 * Use parameters with the :name syntax. Use {@link Query#uniqueResult()}.
+	 *
+	 * @param depName The name.
+	 *
+	 * @return The average {@link TeachersEntity#getSalary() salary} of the {@link DepartmentsEntity department}.
+	 *
+	 * @see Query#uniqueResult()
+	 * @see DepartmentsQuery#getDepartmentByName(String)
+	 */
 	public static double getAverageSalaryOfDepartment(String depName) {
-		// TODO: 5/12/2022
-		return 0;
+		DepartmentsEntity department = getDepartmentByName(depName);
+
+		// If no department found
+		if (department == null) {
+			System.out.println("There is no department that matches the name " + depName);
+			return 0;
+		}
+
+		String hql = "select avg (salary) from TeachersEntity where departmentsByDeptNum = :department";
+
+		Query<Double> query = session
+				.createQuery(hql, Double.class)
+				.setParameter("department", department);
+		System.out.println("HQL: " + query.getQueryString());
+
+		// If no teachers found in department
+		if (department.getTeachersByDeptNum().size() == 0) {
+			System.out.println("There are no teachers in the department " + depName);
+			return 0;
+		}
+
+		try {
+			return query.uniqueResult();
+		}
+		// If all teachers have null salary
+		catch (NullPointerException e) {
+			System.out.printf("All teachers in department %s have null salary%n", depName);
+			return 0;
+		}
 	}
 
+	/**
+	 * Uses a {@link Query query} in HQL to obtain the {@link DepartmentsEntity#getName() name} of each department and
+	 * its average {@link TeachersEntity#getSalary() salary}.
+	 *
+	 * @return A {@link HashMap} that relates the {@link DepartmentsEntity#getName() name} of the department with the
+	 * average {@link TeachersEntity#getSalary() salary}.
+	 *
+	 * @see DepartmentsQuery#getAverageSalaryOfDepartment(String)
+	 */
 	public static HashMap<String, Double> getAverageSalaryPerDept() {
-		// TODO: 5/12/2022
-		return null;
+		HashMap<String, Double> departmentNameAndAverageSalary = new HashMap<>();
+		for (DepartmentsEntity department : getAllDepartments()) {
+			Double salary = getAverageSalaryOfDepartment(department.getName());
+			departmentNameAndAverageSalary.put(department.getName(), salary);
+		}
+		return departmentNameAndAverageSalary;
+	}
+
+	/**
+	 * Setter for {@link #session}.
+	 *
+	 * @param session The session.
+	 */
+	public static void setSession(Session session) {
+		DepartmentsQuery.session = session;
 	}
 }

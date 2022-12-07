@@ -1,0 +1,75 @@
+@startuml
+class App {
+- {static} Menu menu
+- {static} Session session
++ {static} void close()
++ {static} void main(String[])
+}
+class App.Menu {
+~ int EXIT_OPTION
+~ void show()
+}
+class query.TeachersQuery {
+- {static} Session session
++ {static} void showTeacher(TeachersEntity)
++ {static} TeachersEntity[] getAllTeachers()
++ {static} TeachersEntity getMostVeteranTeacher()
++ {static} int setSalary(int)
++ {static} int riseSalaryOfSeniors(int,int)
++ {static} int deleteTeachersOfDepartment(String)
++ {static} void setSession(Session)
+}
+class entity.DepartmentsEntity {
+- int deptNum
+- String name
+- String office
+- Collection<TeachersEntity> teachersByDeptNum
++ int getDeptNum()
++ void setDeptNum(int)
++ String getName()
++ void setName(String)
++ String getOffice()
++ void setOffice(String)
++ Collection<TeachersEntity> getTeachersByDeptNum()
++ void setTeachersByDeptNum(Collection<TeachersEntity>)
+}
+class entity.TeachersEntity {
+- int id
+- String name
+- String surname
+- String email
+- Date startDate
+- Integer salary
+- DepartmentsEntity departmentsByDeptNum
++ int getId()
++ void setId(int)
++ String getName()
++ void setName(String)
++ String getSurname()
++ void setSurname(String)
++ String getEmail()
++ void setEmail(String)
++ Date getStartDate()
++ void setStartDate(Date)
++ Integer getSalary()
++ void setSalary(Integer)
++ DepartmentsEntity getDepartmentsByDeptNum()
++ void setDepartmentsByDeptNum(DepartmentsEntity)
+}
+class query.DepartmentsQuery {
+- {static} Session session
++ {static} void showDepartment(DepartmentsEntity)
++ {static} DepartmentsEntity[] getAllDepartments()
++ {static} DepartmentsEntity getDepartmentByName(String)
++ {static} double getAverageSalaryOfDepartment(String)
++ {static} HashMap<String,Double> getAverageSalaryPerDept()
++ {static} void setSession(Session)
+}
+abstract class util.HibernateUtil {
+- {static} SessionFactory factory
++ {static} SessionFactory getSessionFactory()
+}
+
+
+App +.. App.Menu
+@enduml
