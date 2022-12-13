@@ -1,0 +1,16 @@
+{
+  "name": "expressdemo",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+	"start-back": "node ./bin/www",
+	"start-front": "electron ./public/main.js"
+  },
+  "dependencies": {
+	"cookie-parser": "~1.4.4",
+	"debug": "~2.6.9",
+	"electron": "^22.0.0",
+	"express": "~4.16.1",
+	"morgan": "~1.9.1"
+  }
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/photon.css">
+	<title>your favorite superhero</title>
+</head>
+
+<body>
+<div class="window">
+	<header class="toolbar toolbar-header">
+		<h1 class="title" id="titulo">superhero list</h1>
+	</header>
+	<div class="window-content">
+		<div class="pane-group">
+			<!--Panel principal-->
+			<div class="pane">
+				<div class="padded-more">
+					<h2>superhero:</h2>
+					<table class="table-striped">
+						<tbody>
+						<tr>
+							<td>superhero:</td>
+							<td id="superhero"></td>
+						</tr>
+						<tr>
+							<td>publisher:</td>
+							<td id="publisher"></td>
+						</tr>
+						<tr>
+							<td>alter ego:</td>
+							<td id="alter_ego"></td>
+						</tr>
+						<tr>
+							<td>first appearance:</td>
+							<td id="first_appearance"></td>
+						</tr>
+						<tr>
+							<td>characters:</td>
+							<td id="characters"></td>
+						</tr>
+						</tbody>
+					</table>
+					<hr>
+					<h2>your vote:</h2>
+					<div class="form-group">
+						<label>your name:</label>
+						<input id="voter" type="text" class="form-control" placeholder="type your name">
+					</div>
+					<button id="btVotar" class="btn btn-large btn-positive">Vote for this superhero</button>
+				</div>
+			</div>
+			<!--Panel izquierdo-->
+			<div class="pane">
+				<div class="padded-more">
+					<img id="img" class="pull-right" width="300">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="toolbar toolbar-footer">
+		<button id="btAnterior" class="btn btn-large btn-primary" style="margin-left: 50%;">
+			<span class="icon icon-left-dir"></span>
+		</button>
+		<button id="btSiguiente" class="btn btn-large btn-primary">
+			<span class="icon icon-right-dir "></span>
+		</button>
+	</footer>
+
+</div>
+<script src="./functions.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+[
+  {
+	"title": "Q",
+	"author": "Luther Blissett",
+	"img": "0.jpg"
+  },
+  {
+	"title": "El amor en tiempos cólera",
+	"author": "Gabriel García Márquez",
+	"img": "1.jpg"
+  },
+  {
+	"title": "Watchmen",
+	"author": "Alan Moore y Dave Gibbons",
+	"img": "2.jpg"
+  },
+  {
+	"title": "54",
+	"author": "Wu Ming",
+	"img": "3.jpg"
+  },
+  {
+	"title": "El ejército de los sonámbulos",
+	"author": "Wu Ming",
+	"img": "4.jpg"
+  },
+  {
+	"title": "Maus",
+	"author": "Art Spiegelman",
+	"img": "5.jpg"
+  },
+  {
+	"title": "El tambor de hojalata",
+	"author": "Günter Grass",
+	"img": "6.jpg"
+  },
+  {
+	"title": "Setenta kilos",
+	"author": "Ramón Palomar",
+	"img": "7.jpg"
+  },
+  {
+	"title": "Manela es nombre de Tango",
+	"author": "Almudena Grandes",
+	"img": "8.jpg"
+  },
+  {
+	"title": "La triología de Nueva York",
+	"author": "Paul Auster",
+	"img": "9.jpg"
+  }
+]

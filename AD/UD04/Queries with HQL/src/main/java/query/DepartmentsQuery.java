@@ -30,7 +30,7 @@ public class DepartmentsQuery {
 		session.refresh(department);
 
 		System.out.printf("DeptNum: %d\nName: %s\nTeachers Count: %d%n",
-				department.getDeptNum(), department.getName(), department.getTeachersByDeptNum().size());
+		                  department.getDeptNum(), department.getName(), department.getTeachersByDeptNum().size());
 	}
 
 	/**
