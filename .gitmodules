@@ -1,3 +1,6 @@
 [submodule "SGE/Odoo/odoo-13.0"]
 	path = SGE/Odoo/odoo-13.0
 	url = https://github.com/VictoRPiles/odoo-13.0
+[submodule "AD/AdventOfCode2022"]
+	path = AD/AdventOfCode2022
+	url = https://github.com/VictoRPiles/AdventOfCode2022
