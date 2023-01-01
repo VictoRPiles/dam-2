@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content">
+
+	<ImageView
+		android:id="@+id/damageImage"
+		android:layout_width="86dp"
+		android:layout_height="86dp"
+		android:contentDescription="@string/damage_image"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="0.00999999"
+		app:srcCompat="@drawable/baseline_camera_64" />
+
+	<TextView
+		android:id="@+id/damageTitle"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="10dp"
+		android:fontFamily="@font/jetbrains_mono_medium"
+		android:text="Damage Title"
+		android:textAppearance="@style/TextAppearance.AppCompat.Large"
+		android:textColor="@color/design_default_color_secondary_variant"
+		android:textStyle="bold"
+		app:layout_constraintStart_toEndOf="@+id/damageImage"
+		app:layout_constraintTop_toTopOf="@+id/damageImage" />
+
+	<ImageView
+		android:id="@+id/damageDocument"
+		android:layout_width="48dp"
+		android:layout_height="48dp"
+		android:layout_marginStart="10dp"
+		app:layout_constraintBottom_toBottomOf="@+id/damageImage"
+		app:layout_constraintStart_toEndOf="@+id/damageImage"
+		app:srcCompat="@drawable/baseline_assignment_64" />
+
+	<TextView
+		android:id="@+id/damageModel"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="5dp"
+		android:fontFamily="@font/jetbrains_mono_medium"
+		android:text="Damage Model"
+		android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+		app:layout_constraintStart_toEndOf="@+id/damageDocument"
+		app:layout_constraintTop_toTopOf="@+id/damageDocument" />
+
+	<TextView
+		android:id="@+id/damageBudget"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="5dp"
+		android:fontFamily="@font/jetbrains_mono_medium"
+		android:text="Damage Budget"
+		android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+		app:layout_constraintBottom_toBottomOf="@+id/damageDocument"
+		app:layout_constraintStart_toEndOf="@+id/damageModel"
+		app:layout_constraintStart_toStartOf="@+id/damageModel" />
+</androidx.constraintlayout.widget.ConstraintLayout>
