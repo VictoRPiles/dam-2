@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!--suppress CheckImageSize -->
+<html lang="en">
+<!-- Photon CSS -->
+<link href="css/photon.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <title>Hello World!</title>
+</head>
+<body>
+<div class="window">
+    <header class="toolbar toolbar-header">
+        <h1 class="title">Fes el teu pedido</h1>
+    </header>
+    <div class="window-content">
+        <div class="pane-group">
+            <!-- Panel 1 -->
+            <div class="pane">
+                <img alt="uno" class="img-circle" src="images/1.png" width="64">
+                <!-- Formulari -->
+                <form class="form-group text-center">
+                    <div class="text-left"><span class="icon icon-user padded-horizontally"></span></div>
+                    <label class="w-100">
+                        <input class="form-control" id="inputNom" placeholder="Nom" type="text">
+                    </label>
+                    <div class="text-left"><span class="icon icon-phone padded-horizontally"></span></div>
+                    <label class="w-100">
+                        <input class="form-control" id="inputTelefon" placeholder="Telèfon" type="text">
+                    </label>
+                    <div class="text-left"><span class="icon icon-address padded-horizontally"></span></div>
+                    <label class="w-100">
+                        <input class="form-control" id="inputDireccio" placeholder="Direcció" type="text">
+                    </label>
+                </form>
+            </div>
+            <div class="pane pane-group">
+                <!-- Panel 2 -->
+                <div class="pane">
+                    <img alt="dos" class="img-circle" src="images/2.png" width="64">
+                    <!-- Tamanys -->
+                    <form class="form-group padded">
+                        <div class="radio">
+                            <div>
+                                <label>
+                                    <input name="tamanys" type="radio" value="Xicoteta"> Xicoteta
+                                </label>
+                                <img alt="pizza-x" class="img-rounded pull-right" src="images/pizza1.png" width="24">
+                            </div>
+                            <hr>
+                            <div>
+                                <label>
+                                    <input name="tamanys" type="radio" value="Mitjana"> Mitjana
+                                </label>
+                                <img alt="pizza-m" class="img-rounded pull-right" src="images/pizza1.png" width="36">
+                            </div>
+                            <hr>
+                            <div>
+                                <label>
+                                    <input name="tamanys" type="radio" value="Gran"> Gran
+                                </label>
+                                <img alt="pizza-g" class="img-rounded pull-right" src="images/pizza1.png" width="48">
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Panel 3 -->
+                    <div class="pane">
+                        <img alt="tres" class="img-circle" src="images/3.png" width="64">
+                        <!-- Masses -->
+                        <form class="form-group padded">
+                            <div class="radio">
+                                <div>
+                                    <label>
+                                        <input name="massa" type="radio" value="Fina"> Fina
+                                    </label>
+                                    <img alt="fina" class="img-rounded pull-right" height="36" src="images/pizza2.png"
+                                         width="48">
+                                </div>
+                                <hr>
+                                <div>
+                                    <label>
+                                        <input name="massa" type="radio" value="Grossa"> Grossa
+                                    </label>
+                                    <img alt="grossa" class="img-rounded pull-right" src="images/pizza2.png" width="48">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Panel 4 -->
+            <div class="pane">
+                <img alt="quatre" class="img-circle" src="images/4.png" width="64">
+                <!-- Ingredients -->
+                <div class="form-group padded" id="ingredients">
+                    <div class="checkbox">
+                        <label>
+                            <input value="Pepperoni" type="checkbox"> Pepperoni
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input value="Salxitxa" type="checkbox"> Salxitxa
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input value="Parmesa" type="checkbox"> Parmesà
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input value="Olives" type="checkbox"> Olives
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input value="Xampinyo" type="checkbox"> Xampinyó
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input value="Tomates" type="checkbox"> Tomates
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input value="Anxoves" type="checkbox"> Anxoves
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="toolbar toolbar-footer">
+        <div class="toolbar-actions">
+            <button class="btn btn-primary pull-right" id="btnCancelar">
+                Cancelar
+            </button>
+            <button class="btn btn-primary pull-right" id="btnAcceptar">
+                Acceptar
+            </button>
+        </div>
+    </footer>
+</div>
+<script src="js/pdf.js"></script>
+<script src="js/close.js"></script>
+</body>
+</html>
