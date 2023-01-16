@@ -12,9 +12,10 @@ public class Principal implements Comu {
         SalaReunions salaReunions = new SalaReunions();
 
         /* Crear els 4 hackers -fils- (Neo, P4Qu1T0, PaU3T i Ab4$T0$) */
-        for (String hacker : HACKERS) {
+        for (int i = 0; i < HACKERS.length; i++) {
+            String hacker = HACKERS[i];
             System.out.println("Cree: " + hacker);
-            Hacker h = new Hacker(hacker, salaReunions);
+            Hacker h = new Hacker(hacker, salaReunions, hackerCadencia[i]);
             llistaHackers.add(h);
         }
 

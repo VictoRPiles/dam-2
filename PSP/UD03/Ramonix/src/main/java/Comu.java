@@ -40,4 +40,5 @@ public interface Comu {
 
     // LLISTAT DE HACKERS
     String[] HACKERS = {"P4q1T0", "Neo", "PaU3T", "Ab4$t0$"};
+    int[] hackerCadencia = {1, 2, 1, 1};
 }

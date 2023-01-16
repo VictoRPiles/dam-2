@@ -5,9 +5,12 @@ public class Hacker extends Thread implements Comu {
     private final String nom;
     private final SalaReunions salaReunions;
 
-    public Hacker(String nom, SalaReunions salaReunions) {
+    private final float cadencia;
+
+    public Hacker(String nom, SalaReunions salaReunions, float cadencia) {
         this.nom = nom;
         this.salaReunions = salaReunions;
+        this.cadencia = cadencia;
     }
 
     public String getNom() {
@@ -28,9 +31,9 @@ public class Hacker extends Thread implements Comu {
             Atac atac = new Atac(this);
             /* El hacker ataca a Ramonix */
             destruit = atac.atacar();
-            /* El hacker s'espera mig segon abans d'atacar de nou, ha de descansar */
+            /* El hacker s'espera abans d'atacar de nou, ha de descansar */
             try {
-                sleep(500);
+                sleep((long) (this.cadencia * 1000));
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
