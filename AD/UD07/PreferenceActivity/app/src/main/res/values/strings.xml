@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Preference Activity</string>
+    <string-array name="colors_values">
+        <item>Negro</item>
+        <item>Blanco</item>
+        <item>Azul</item>
+        <item>Rojo</item>
+    </string-array>
+    <string-array name="colors_key">
+        <item>black</item>
+        <item>white</item>
+        <item>blue</item>
+        <item>red</item>
+    </string-array>
+</resources>
