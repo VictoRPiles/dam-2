@@ -1,0 +1,17 @@
+{
+  "name": "formulariomongodb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^22.0.2",
+    "mongodb": "^4.13.0"
+  }
+}
