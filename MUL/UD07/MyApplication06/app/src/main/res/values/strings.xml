@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Application 06</string>
+    <string name="notification">Notification</string>
+    <string name="click_me">Click me!</string>
+    <string name="channel_name">My Notification</string>
+    <string name="channel_description">Go to Google</string>
+</resources>

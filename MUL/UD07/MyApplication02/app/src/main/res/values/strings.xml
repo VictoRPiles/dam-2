@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">My Application 02</string>
+    <string name="preferences_activity">Preferences Activity</string>
+    <string name="define_preferences">Define preferences</string>
+    <string name="recover_preferences">Recover preferences</string>
+    <string name="image">image</string>
+    <string-array name="os_keys">
+        <item>linux</item>
+        <item>windows</item>
+        <item>mac-os</item>
+    </string-array>
+    <string-array name="os_values">
+        <item>Linux</item>
+        <item>Windows</item>
+        <item>Mac OS</item>
+    </string-array>
+</resources>
