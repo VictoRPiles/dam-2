@@ -1,5 +1,6 @@
-package entity;
+package data.entity;
 
+import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.types.ObjectId;
 
 import java.util.List;
@@ -8,22 +9,60 @@ import java.util.List;
  * @author victor
  */
 public class Article {
+    @BsonId
     private final ObjectId id;
     private String name;
-    private float price;
+    private Float price;
     private List<String> categories;
     private List<Comment> comments;
 
     public Article() {
         id = new ObjectId();
+        comments = null;
     }
 
-    public Article(String name, float price, List<String> categories) {
+    public Article(String name, Float price, List<String> categories) {
         id = new ObjectId();
         this.name = name;
         this.price = price;
         this.categories = categories;
-        this.comments = null;
+        comments = null;
+    }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+
+    public List<String> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<String> categories) {
+        this.categories = categories;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     @Override
@@ -50,41 +89,5 @@ public class Article {
                 ", categories=" + categories +
                 ", comments=" + comments +
                 '}';
-    }
-
-    public ObjectId getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    public List<String> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(List<String> categories) {
-        this.categories = categories;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
     }
 }
