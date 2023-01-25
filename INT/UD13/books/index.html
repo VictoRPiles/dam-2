@@ -14,60 +14,40 @@
 <body>
 <!-- Header -->
 <div class="container mw-100 w-100 bg-dark">
-    <header class="d-flex justify-content-center py-1">
-        <h1 class="text-light text-capitalize">Your book store</h1>
-    </header>
+    <nav class="navbar navbar-light  justify-content-between">
+        <h1 class="display-1 text-light navbar-brand fs-1">Your Book Store</h1>
+        <button class="btn btn-primary rounded-circle my-2 my-sm-0 border-2 border-light" id="cart-button"
+                type="button">0
+        </button>
+    </nav>
 </div>
 
 <!-- Gallery -->
-<div class="container">
-
-    <!-- Gallery header -->
-    <h1 class="fw-light text-center text-lg-start mt-4 mb-0">Books gallery</h1>
-    <hr class="mt-2 mb-5">
-
+<div class="d-flex container w-100 mt-2 flex-nowrap">
     <!-- Images -->
-    <div class="row text-center text-lg-start" id="gallery-images">
-
-        <div class="col-lg-3 col-md-4 col-6">
-            <img alt="" class="img-fluid img-thumbnail" src="https://source.unsplash.com/aob0ukAYfuI/400x300">
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <img alt="" class="img-fluid img-thumbnail" src="https://source.unsplash.com/EUfxH-pze7s/400x300">
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <img alt="" class="img-fluid img-thumbnail" src="https://source.unsplash.com/M185_qYH8vg/400x300">
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <img alt="" class="img-fluid img-thumbnail" src="https://source.unsplash.com/sesveuG_rNo/400x300">
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <img alt="" class="img-fluid img-thumbnail" src="https://source.unsplash.com/AvhMzHwiE_0/400x300">
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <img alt="" class="img-fluid img-thumbnail" src="https://source.unsplash.com/2gYsZUmockw/400x300">
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <img alt="" class="img-fluid img-thumbnail" src="https://source.unsplash.com/EMSDtjVHdQ8/400x300">
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <img alt="" class="img-fluid img-thumbnail" src="https://source.unsplash.com/8mUEy0ABdNE/400x300">
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <img alt="" class="img-fluid img-thumbnail" src="https://source.unsplash.com/G9Rfc1qccH4/400x300">
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <img alt="" class="img-fluid img-thumbnail" src="https://source.unsplash.com/aJeH0KcFkuc/400x300">
-        </div>
-        <div class="col-lg-3 col-md-4 col-6">
-            <img alt="" class="img-fluid img-thumbnail" src="https://source.unsplash.com/p2TQ-3Bh3Oo/400x300">
+    <div class="row" id="gallery-images">
+        <!-- Fill from images.js -->
+    </div>
+    <!-- Sidebar -->
+    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px;">
+        <div class="list-group list-group-flush border-bottom scrollarea">
+            <a aria-current="true" class="list-group-item list-group-item-action py-3 lh-tight" href="#">
+                <div class="d-flex w-100 align-items-center justify-content-between">
+                    <strong class="mb-1">List group item heading</strong>
+                    <small>Wed</small>
+                </div>
+                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+            </a>
         </div>
     </div>
 
 </div>
 
+
 <!-- Images JS -->
-<script src="images.js"></script>
+<script src="javascript/images.js"></script>
+<!-- Cart JS -->
+<script src="javascript/cart.js"></script>
 <!-- Separate Popper and Bootstrap JS -->
 <script crossorigin="anonymous"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
