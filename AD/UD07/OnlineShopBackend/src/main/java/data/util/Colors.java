@@ -19,7 +19,15 @@ public interface Colors {
     String CYAN = "\033[0;36m";     /* CYAN */
     String WHITE = "\033[0;37m";    /* WHITE */
 
-    static void printInfoMessage(String message) {
+    static void printQueryMessage(String message) {
         System.out.println(GREEN + "[+] " + message + RESET);
+    }
+
+    static void printInfoMessage(String message) {
+        System.out.println(YELLOW + "[+] " + message + RESET);
+    }
+
+    static void printSelectMessage(String message) {
+        System.out.println(CYAN + "[+] " + message + RESET);
     }
 }
