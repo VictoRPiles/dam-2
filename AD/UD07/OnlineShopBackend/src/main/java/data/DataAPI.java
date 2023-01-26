@@ -14,6 +14,7 @@ import data.util.Colors;
 import data.util.MongoHelper;
 import org.bson.types.ObjectId;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.TestOnly;
 import org.jetbrains.annotations.VisibleForTesting;
 
@@ -91,7 +92,7 @@ public abstract class DataAPI {
      * @param id The id of the article.
      * @return The article object.
      */
-    public static Article findArticle(@NotNull ObjectId id) {
+    public static @Nullable Article findArticle(@NotNull ObjectId id) {
         Colors.printQueryMessage("Searching for article with id: " + id + "...");
         MongoCollection<Article> collection = db.getCollection(ARTICLES_COLLECTION, Article.class);
         return collection.find(eq("_id", id)).first();
@@ -155,7 +156,7 @@ public abstract class DataAPI {
      * @param ascendent The order.
      * @return The {@link FindIterable<Article> FindIterable<Article>} object ordered by price.
      */
-    public static @NotNull FindIterable<Article> orderByPrice(FindIterable<Article> articles, boolean ascendent) {
+    public static @NotNull FindIterable<Article> orderByPrice(@NotNull FindIterable<Article> articles, boolean ascendent) {
         String oderDirection = ascendent ? "ascendent" : "descendent";
         Colors.printQueryMessage("Sorting articles in " + oderDirection + " order...");
         return ascendent ? articles.sort(ascending("price")) : articles.sort(descending("price"));

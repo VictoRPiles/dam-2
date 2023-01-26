@@ -1,5 +1,7 @@
 package data.entity;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * @author victor
  */
@@ -52,7 +54,7 @@ public class Address {
     }
 
     @Override
-    public String toString() {
+    public @NotNull String toString() {
         return "Address{" +
                 "street='" + street + '\'' +
                 ", number=" + number +

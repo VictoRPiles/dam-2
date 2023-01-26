@@ -2,13 +2,15 @@ package data.entity;
 
 import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.types.ObjectId;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author victor
  */
 public class User {
     @BsonId
-    private final ObjectId id;
+    private final @NotNull ObjectId id;
     private String name;
     private String email;
     private Address address;
@@ -24,7 +26,7 @@ public class User {
         this.address = address;
     }
 
-    public ObjectId getId() {
+    public @NotNull ObjectId getId() {
         return id;
     }
 
@@ -53,7 +55,7 @@ public class User {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(@Nullable Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -68,7 +70,7 @@ public class User {
     }
 
     @Override
-    public String toString() {
+    public @NotNull String toString() {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +

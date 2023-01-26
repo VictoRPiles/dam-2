@@ -166,7 +166,7 @@ class DataAPITest {
         FindIterable<User> blankCountry = DataAPI.findUserByCountry("");
         FindIterable<User> unknownCountry = DataAPI.findUserByCountry("Unknown Country");
 
-        assertThrows(IllegalArgumentException.class, () ->  DataAPI.findUserByCountry(null));
+        assertThrows(IllegalArgumentException.class, () -> DataAPI.findUserByCountry(null));
 
         MongoHelper.printPojoFindIterable(testCountry);
         MongoHelper.printPojoFindIterable(javaCountry);

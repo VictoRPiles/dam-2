@@ -1,6 +1,7 @@
 package data.entity;
 
 import org.bson.types.ObjectId;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @author victor
@@ -50,7 +51,7 @@ public class Comment {
     }
 
     @Override
-    public String toString() {
+    public @NotNull String toString() {
         return "Comment{" +
                 "score=" + score +
                 ", userId=" + userId +

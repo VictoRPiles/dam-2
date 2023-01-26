@@ -2,6 +2,8 @@ package data.entity;
 
 import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.types.ObjectId;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -10,11 +12,11 @@ import java.util.List;
  */
 public class Article {
     @BsonId
-    private final ObjectId id;
+    private final @NotNull ObjectId id;
     private String name;
     private Float price;
     private List<String> categories;
-    private List<Comment> comments;
+    private @Nullable List<Comment> comments;
 
     public Article() {
         id = new ObjectId();
@@ -29,7 +31,7 @@ public class Article {
         comments = null;
     }
 
-    public ObjectId getId() {
+    public @NotNull ObjectId getId() {
         return id;
     }
 
@@ -57,7 +59,7 @@ public class Article {
         this.categories = categories;
     }
 
-    public List<Comment> getComments() {
+    public @Nullable List<Comment> getComments() {
         return comments;
     }
 
@@ -66,7 +68,7 @@ public class Article {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(@Nullable Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -81,7 +83,7 @@ public class Article {
     }
 
     @Override
-    public String toString() {
+    public @NotNull String toString() {
         return "Article{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
