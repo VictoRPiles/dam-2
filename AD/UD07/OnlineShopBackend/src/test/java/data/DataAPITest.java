@@ -1,14 +1,17 @@
 package data;
 
+import com.mongodb.MongoException;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import data.entity.Address;
 import data.entity.Article;
+import data.entity.Comment;
 import data.entity.User;
 import data.util.Colors;
 import data.util.MongoHelper;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -20,18 +23,20 @@ class DataAPITest {
     @BeforeAll
     static void setUp() {
         DataAPI.init();
-
-        MongoCollection<Object> usersCollection = DataAPI.getCollectionByName(DataAPI.USERS_COLLECTION);
-        MongoCollection<Object> articlesCollection = DataAPI.getCollectionByName(DataAPI.ARTICLES_COLLECTION);
-
-        /* Drop all records in these collections for proper testing */
-        MongoHelper.dropAllInCollection(usersCollection);
-        MongoHelper.dropAllInCollection(articlesCollection);
     }
 
     @AfterAll
     static void tearDown() {
         DataAPI.close();
+    }
+
+    @BeforeEach
+    void dropAllBeforeEach() {
+        MongoCollection<Object> usersCollection = DataAPI.getCollectionByName(DataAPI.USERS_COLLECTION);
+        MongoCollection<Object> articlesCollection = DataAPI.getCollectionByName(DataAPI.ARTICLES_COLLECTION);
+        /* Drop all records in these collections for proper testing */
+        MongoHelper.dropAllInCollection(usersCollection);
+        MongoHelper.dropAllInCollection(articlesCollection);
     }
 
     @Test
@@ -60,12 +65,12 @@ class DataAPITest {
         Article emptyArticle = new Article();
         DataAPI.insertArticle(emptyArticle);
         Article found = DataAPI.findArticle(emptyArticle.getId());
-        Colors.printSelectMessage(found.toString());
+        Colors.printSelectMessage(found != null ? found.toString() : null);
 
         Article filledArticle = new Article("Test Article", 100f, List.of("Test Category 1", "Test Category 2"));
         DataAPI.insertArticle(filledArticle);
         Article found2 = DataAPI.findArticle(filledArticle.getId());
-        Colors.printSelectMessage(found2.toString());
+        Colors.printSelectMessage(found2 != null ? found2.toString() : null);
     }
 
     @Test
@@ -125,9 +130,9 @@ class DataAPITest {
         System.out.println("\n########## Test: findArticleInPriceRange ##########");
         Article articleByPrice1 = new Article("Article 1", 1000f, List.of("Test Category 3"));
         Article articleByPrice2 = new Article("Article 2", 2000f, List.of("Test Category 3"));
-        Article articleByPrice3 = new Article("Article 2", 10000f, List.of("Test Category 3"));
-        Article articleByPrice4 = new Article("Article 2", 0f, List.of("Test Category 3"));
-        Article articleByPrice5 = new Article("Article 2", null, List.of("Test Category 3"));
+        Article articleByPrice3 = new Article("Article 3", 10000f, List.of("Test Category 3"));
+        Article articleByPrice4 = new Article("Article 4", 0f, List.of("Test Category 3"));
+        Article articleByPrice5 = new Article("Article 5", null, List.of("Test Category 3"));
 
         DataAPI.insertArticle(articleByPrice1);
         DataAPI.insertArticle(articleByPrice2);
@@ -153,8 +158,8 @@ class DataAPITest {
 
         User userByCountry1 = new User("User 1", "user1@test.com", new Address("Test St.", 1, "Test City", "Test Country"));
         User userByCountry2 = new User("User 2", "user2@test.com", new Address("Test St.", 2, "Test City", "Java Country"));
-        User userByCountry3 = new User("User 2", "user2@test.com", null);
-        User userByCountry4 = new User("User 2", "user2@test.com", new Address("Test St.", 2, "Java City", null));
+        User userByCountry3 = new User("User 3", "user3@test.com", null);
+        User userByCountry4 = new User("User 4", "user4@test.com", new Address("Test St.", 2, "Java City", null));
 
         DataAPI.insertUser(userByCountry1);
         DataAPI.insertUser(userByCountry2);
@@ -177,36 +182,99 @@ class DataAPITest {
     @Test
     void orderByPrice() {
         System.out.println("\n########## Test: orderByPrice ##########");
-        // TODO: 26/1/2023 Code  
+        Article articleByPrice1 = new Article("Article 1", 1000f, List.of("Test Category 3"));
+        Article articleByPrice2 = new Article("Article 2", 2000f, List.of("Test Category 3"));
+        Article articleByPrice3 = new Article("Article 3", 10000f, List.of("Test Category 3"));
+        Article articleByPrice4 = new Article("Article 4", 0f, List.of("Test Category 3"));
+        Article articleByPrice5 = new Article("Article 5", null, List.of("Test Category 3"));
+
+        DataAPI.insertArticle(articleByPrice1);
+        DataAPI.insertArticle(articleByPrice2);
+        DataAPI.insertArticle(articleByPrice3);
+        DataAPI.insertArticle(articleByPrice4);
+        DataAPI.insertArticle(articleByPrice5);
+
+        /* All articles */
+        FindIterable<Article> articles = DataAPI.findArticleByName("Article");
+
+        FindIterable<Article> articlesByPriceAscendent = DataAPI.orderByPrice(articles, true);
+        MongoHelper.printPojoFindIterable(articlesByPriceAscendent);
+
+        FindIterable<Article> articlesByPriceDescendent = DataAPI.orderByPrice(articles, false);
+        MongoHelper.printPojoFindIterable(articlesByPriceDescendent);
     }
 
     @Test
     void updateAddress() {
         System.out.println("\n########## Test: updateAddress ##########");
-        // TODO: 26/1/2023 Code  
+        User user1 = new User("User 1", "user1@test.com", null);
+        DataAPI.insertUser(user1);
+        DataAPI.updateAddress(user1, new Address());
+        User user2 = new User("User 2", "user2@test.com", new Address());
+        DataAPI.insertUser(user2);
+        DataAPI.updateAddress(user2, new Address("Test St", 10, "Test City", "Test country"));
+        User user3 = new User("User 3", "user3@test.com", new Address());
+        DataAPI.insertUser(user3);
+        DataAPI.updateAddress(user3, new Address("Test St", 10, "Test City", null));
+
+        FindIterable<User> users = DataAPI.findUserByCountry("Test country");
+        MongoHelper.printPojoFindIterable(users);
     }
 
     @Test
     void updateEmail() {
         System.out.println("\n########## Test: updateEmail ##########");
-        // TODO: 26/1/2023 Code  
+        User user1 = new User("User 1", "user1@test.com", new Address("Test St", 10, "Test City", "Test Country"));
+        DataAPI.insertUser(user1);
+        DataAPI.updateEmail(user1, "user1@newTest.com");
+        User user2 = new User("User 2", null, new Address("Test St", 10, "Test City", "Test Country"));
+        DataAPI.insertUser(user2);
+        DataAPI.updateEmail(user2, "user2@newTest.com");
+
+        FindIterable<User> users = DataAPI.findUserByCountry("Test Country");
+        MongoHelper.printPojoFindIterable(users);
     }
 
     @Test
     void addComment() {
         System.out.println("\n########## Test: addComment ##########");
-        // TODO: 26/1/2023 Code  
+        User user1 = new User("User 1", "user1@test.com", new Address("Test St", 10, "Test City", "Test Country"));
+        DataAPI.insertUser(user1);
+        DataAPI.addComment(new Article(), new Comment(3, user1.getId(), "Test comment 1"));
+
+        assertThrows(IllegalArgumentException.class, () -> DataAPI.addComment(new Article(), new Comment(0, user1.getId(), "Test comment 2")));
+        DataAPI.addComment(new Article(), new Comment(1, user1.getId(), "Test comment 3"));
+        DataAPI.addComment(new Article(), new Comment(5, user1.getId(), "Test comment 4"));
+        assertThrows(IllegalArgumentException.class, () -> DataAPI.addComment(new Article(), new Comment(6, user1.getId(), "Test comment 5")));
+
+        User user2 = new User("User 2", "user2@test.com", new Address("Test St", 10, "Test City", "Test Country"));
+        assertThrows(MongoException.class, () -> DataAPI.addComment(new Article(), new Comment(3, user2.getId(), "Test comment 2")));
+
+        DataAPI.addComment(new Article(), new Comment(3, user1.getId(), "Test comment 3"));
     }
 
     @Test
     void deleteArticle() {
         System.out.println("\n########## Test: deleteArticle ##########");
-        // TODO: 26/1/2023 Code  
+        DataAPI.deleteArticle(new Article());
+        Article article1 = new Article();
+        DataAPI.insertArticle(article1);
+        DataAPI.deleteArticle(article1);
     }
 
     @Test
     void deleteUser() {
         System.out.println("\n########## Test: deleteUser ##########");
-        // TODO: 26/1/2023 Code  
+        DataAPI.deleteUser(new User());
+        User user1 = new User();
+        DataAPI.insertUser(user1);
+        DataAPI.deleteUser(user1);
+
+        User user2 = new User();
+        DataAPI.insertUser(user2);
+        Article article = new Article("Test article 1", 100f, List.of("Test category"));
+        DataAPI.addComment(article, new Comment(3, user2.getId(), "Test comment1"));
+        DataAPI.addComment(article, new Comment(4, user2.getId(), "Test comment2"));
+        DataAPI.deleteUser(user2);
     }
 }

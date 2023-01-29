@@ -1,5 +1,6 @@
 package data.entity;
 
+import data.util.Colors;
 import org.bson.types.ObjectId;
 import org.jetbrains.annotations.NotNull;
 
@@ -30,7 +31,10 @@ public class Comment {
      * @param score The score value.
      */
     public void setScore(Integer score) {
-        if (!((score >= 1) && (score <= 5))) throw new IllegalArgumentException("Score value must be between 1 and 5");
+        if (!((score >= 1) && (score <= 5))) {
+            Colors.printInfoMessage("Score value must be between 1 and 5");
+            throw new IllegalArgumentException("Score value must be between 1 and 5");
+        }
         this.score = score;
     }
 
