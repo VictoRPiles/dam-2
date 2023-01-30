@@ -22,30 +22,25 @@
     </nav>
 </div>
 
-<!-- Gallery -->
-<div class="d-flex container w-100 mt-2 flex-nowrap">
-    <!-- Images -->
-    <div class="row" id="gallery-images">
-        <!-- Fill from images.js -->
-    </div>
-    <!-- Sidebar -->
-    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px;">
-        <div class="list-group list-group-flush border-bottom scrollarea">
-            <a aria-current="true" class="list-group-item list-group-item-action py-3 lh-tight" href="#">
-                <div class="d-flex w-100 align-items-center justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                    <small>Wed</small>
-                </div>
-                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
-            </a>
+<div class="container">
+    <div class="row align-items-start">
+        <!-- Gallery -->
+        <div class="d-flex container w-100 mt-2 flex-nowrap col">
+            <!-- Images -->
+            <div class="row" id="gallery-images">
+                <!-- Fill from cart.js -->
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="flex-column align-items-stretch flex-shrink-0 col" id="sidebar" style="width: 380px; display: none">
+            <div class="list-group list-group-flush border-bottom scrollarea" id="items-in-cart">
+                <!-- Fill from cart.js -->
+            </div>
         </div>
     </div>
-
 </div>
 
-
-<!-- Images JS -->
-<script src="javascript/images.js"></script>
 <!-- Cart JS -->
 <script src="javascript/cart.js"></script>
 <!-- Separate Popper and Bootstrap JS -->

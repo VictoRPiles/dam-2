@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Photon CSS -->
+    <link href="css/photon.css" rel="stylesheet">
+
+    <title>Students Marks</title>
+</head>
+<body>
+
+<div class="window">
+    <!-- Cabecera con botones -->
+    <header class="toolbar toolbar-header">
+        <h1 class="title">Students</h1>
+        <div class="toolbar-actions">
+            <div class="btn-group">
+                <button class="btn btn-default" id="open">
+                    <span class="icon icon-folder"></span>
+                </button>
+
+                <button class="btn btn-default" id="save">
+                    <span class="icon icon-floppy"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- Contenido principal -->
+    <div class="window-content">
+        <div class="pane">
+            <!-- Tabla con notas-->
+            <table class="table-striped">
+                <thead>
+                <tr>
+                    <th>Group</th>
+                    <th>Name</th>
+                    <th>Mark</th>
+                </tr>
+                </thead>
+                <tbody id="cTabla">
+                    <!-- Fill from index.js -->
+                    <!-- TODO -->
+                </tbody>
+            </table>
+            <!-- FIN tabla con notas -->
+        </div>
+    </div>
+    <footer class="toolbar toolbar-footer">
+        <h1 class="title">Students marks with JSON file</h1>
+    </footer>
+</div>
+<script src="index.js"></script>
+</body>
+</html>
