@@ -202,6 +202,7 @@ public abstract class DataAPI {
 
         User userWithId = usersCollection.find(eq("_id", newComment.getUserId())).first();
         if (userWithId == null) {
+            Colors.printInfoMessage("User with id " + newComment.getUserId() + " not found.");
             throw new MongoException("User with id " + newComment.getUserId() + " not found.");
         }
 
@@ -216,7 +217,10 @@ public abstract class DataAPI {
     public static void deleteArticle(@NotNull Article article) {
         Colors.printQueryMessage(String.format("Deleting article: " + article + " ..."));
         MongoCollection<Article> collection = db.getCollection(ARTICLES_COLLECTION, Article.class);
-        collection.deleteOne(eq("_id", article.getId()));
+        long deletedCount = collection.deleteOne(eq("_id", article.getId())).getDeletedCount();
+        if (deletedCount == 0) {
+            Colors.printInfoMessage(String.format("Article: " + article + " doesn't exist."));
+        }
     }
 
     /**
@@ -228,9 +232,13 @@ public abstract class DataAPI {
     public static void deleteUser(@NotNull User user) {
         Colors.printQueryMessage(String.format("Deleting user: " + user + " ..."));
         MongoCollection<User> usersCollection = db.getCollection(USERS_COLLECTION, User.class);
-        usersCollection.deleteOne(eq("_id", user.getId()));
+        long deletedCount = usersCollection.deleteOne(eq("_id", user.getId())).getDeletedCount();
+        if (deletedCount == 0) {
+            Colors.printInfoMessage(String.format("User: " + user + " doesn't exist."));
+            return;
+        }
 
-        Colors.printQueryMessage("\tDeleting comments ...");
+        Colors.printQueryMessage("Deleting comments ...");
         MongoCollection<Article> articlesCollection = db.getCollection(ARTICLES_COLLECTION, Article.class);
         articlesCollection.deleteMany(eq("comments.userId", user.getId()));
     }
