@@ -1,0 +1,3 @@
+[submodule "odoo"]
+	path = SGE/Odoo/odoo
+	url = https://github.com/VictoRPiles/odoo
