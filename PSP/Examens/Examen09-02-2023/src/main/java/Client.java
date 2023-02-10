@@ -1,7 +1,3 @@
-package org.example.client;
-
-import org.example.util.Color;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,6 +6,8 @@ import java.net.Socket;
 import java.util.Scanner;
 
 /**
+ * Client que envia missatges a un servidor i rep els nombres de verificació.
+ *
  * @author victor
  */
 public class Client implements Runnable {
@@ -20,6 +18,11 @@ public class Client implements Runnable {
 	private PrintWriter printWriter;
 
 	private final String name;
+
+	public static void main(String[] args) {
+		Client client = new Client("localhost", 1234, "Client");
+		new Thread(client).start();
+	}
 
 	public Client(String host, Integer port, String name) {
 		this.HOST = host;
@@ -70,24 +73,31 @@ public class Client implements Runnable {
 			throw new RuntimeException();
 		}
 
-		/* ########## Missatges ########## */
+		/* ########## Intercanvi de missatges ########## */
 		try {
 			Scanner scanner = new Scanner(System.in);
 			System.out.print("Nombre de línies -> ");
 			int nombreDeLinies = scanner.nextInt();
 
+			/* Quantitat de línies enviades pel client */
 			printWriter.println(nombreDeLinies);
 			printWriter.flush();
 
-			for (int i = 0; i < nombreDeLinies; i++) {
-				System.out.print("Missatge -> ");
+			Color.printYellowMessage("Client: [@] Client envia: " + nombreDeLinies + " línies.");
+
+			/* Per cada línia, enviar una cadena */
+			for (int i = 1; i <= nombreDeLinies; i++) {
+				System.out.print("Missatge " + i + " -> ");
 				String missatge = scanner.next();
 				printWriter.println(missatge);
 				printWriter.flush();
+
+				Color.printYellowMessage("Client: [@] Client envia: " + missatge);
 			}
 
-			for (int i = 0; i < nombreDeLinies; i++) {
-				Color.printYellowMessage(name + ": [@] Servidor contesta: " + bufferedReader.readLine());
+			/* Rebre un valor per cada cadena */
+			for (int i = 1; i <= nombreDeLinies; i++) {
+				Color.printYellowMessage(name + ": [@] Servidor contesta: " + bufferedReader.readLine() + " (cadena " + i + ")");
 			}
 		} catch (NullPointerException | IOException e) {
 			Color.printRedMessage(name + ": [-] Error de comunicació amb el servidor.");
