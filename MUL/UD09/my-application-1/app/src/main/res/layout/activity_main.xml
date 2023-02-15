@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/primerFragmentContainerView"
+            android:layout_weight=".5"
+            android:name="com.example.myapplication1.FirstFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="194dp"
+            tools:layout_editor_absoluteY="299dp" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/segundoFragmentContainerView"
+            android:layout_weight="1"
+            android:name="com.example.myapplication1.SecondFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="194dp"
+            tools:layout_editor_absoluteY="299dp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

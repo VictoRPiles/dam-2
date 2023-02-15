@@ -1,0 +1,48 @@
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Notas Alumnos</title>
+    <link rel="stylesheet" href="./css/photon.min.css">
+
+</head>
+
+<body>
+<div class="window">
+    <header class="toolbar toolbar-header">
+        <h1 class="title">Alumnos</h1>
+        <div class="toolbar-actions">
+            <div class="btn-group">
+                <button class="btn btn-default" id="open">
+                    <span class="icon icon-folder"></span>
+                </button>
+
+                <button class="btn btn-default" id="save">
+                    <span class="icon icon-floppy"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="window-content">
+        <div class="pane">
+            <table class="table-striped">
+                <thead>
+                <tr>
+                    <th>Grupo</th>
+                    <th>Nombre</th>
+                    <th>Nota</th>
+                </tr>
+                </thead>
+                <tbody id="cTabla">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer class="toolbar toolbar-footer">
+        <h1 class="title">Notas alumnos con JSON file</h1>
+    </footer>
+</div>
+<script src="index.js"></script>
+</body>
+</html>
