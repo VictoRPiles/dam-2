@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
     <class name="org.example.entity.FabricantesEntity" table="fabricantes" schema="examen2hiber">
@@ -17,11 +17,5 @@
         <property name="domicilio">
             <column name="domicilio" sql-type="varchar(30)" length="30" not-null="true"/>
         </property>
-        <set name="productosByCif" inverse="true">
-            <key>
-                <column name="cif_fabric" not-null="true"/>
-            </key>
-            <one-to-many not-found="ignore" class="org.example.entity.ProductosEntity"/>
-        </set>
     </class>
 </hibernate-mapping>

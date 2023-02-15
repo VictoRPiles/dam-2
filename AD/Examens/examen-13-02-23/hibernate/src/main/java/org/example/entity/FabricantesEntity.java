@@ -2,8 +2,6 @@ package org.example.entity;
 
 import jakarta.persistence.*;
 
-import java.util.Collection;
-
 /**
  * @author victor
  */
@@ -23,8 +21,6 @@ public class FabricantesEntity {
 	@Basic
 	@Column(name = "domicilio", nullable = true, length = 30)
 	private String domicilio;
-	@OneToMany(mappedBy = "fabricantesByCifFabric")
-	private Collection<ProductosEntity> productosByCif;
 
 	public String getCif() {
 		return cif;
@@ -58,11 +54,14 @@ public class FabricantesEntity {
 		this.domicilio = domicilio;
 	}
 
-	public Collection<ProductosEntity> getProductosByCif() {
-		return productosByCif;
-	}
 
-	public void setProductosByCif(Collection<ProductosEntity> productosByCif) {
-		this.productosByCif = productosByCif;
+	@Override
+	public String toString() {
+		return "FabricantesEntity{" +
+				"cif='" + cif + '\'' +
+				", nombre='" + nombre + '\'' +
+				", descrip='" + descrip + '\'' +
+				", domicilio='" + domicilio + '\'' +
+				'}';
 	}
 }

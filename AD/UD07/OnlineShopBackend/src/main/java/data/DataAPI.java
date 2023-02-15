@@ -42,7 +42,6 @@ public abstract class DataAPI {
      * Initialize the {@link MongoClient mongo client} and the {@link MongoDatabase database}
      */
     public static void init() {
-        Colors.printInfoMessage("Connecting to Mongo database (mongodb://localhost:27017/)...");
         client = new MongoClient(
                 new MongoClientURI(
                         "mongodb://localhost:27017/"

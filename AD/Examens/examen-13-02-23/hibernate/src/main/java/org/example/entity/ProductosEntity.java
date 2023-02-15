@@ -53,4 +53,13 @@ public class ProductosEntity {
 	public void setFabricantesByCifFabric(FabricantesEntity fabricantesByCifFabric) {
 		this.fabricantesByCifFabric = fabricantesByCifFabric;
 	}
+
+	@Override
+	public String toString() {
+		return "ProductosEntity{" +
+				"ref=" + ref +
+				", nombre='" + nombre + '\'' +
+				", precio=" + precio +
+				'}';
+	}
 }
