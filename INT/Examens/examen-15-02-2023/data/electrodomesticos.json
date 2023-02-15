@@ -1,0 +1,26 @@
+[
+  {
+	"nombre": "Television 50 p",
+	"precioCoste": 200,
+	"precioVenta": 250,
+	"img": "tv50.jpg"
+  },
+  {
+	"nombre": "Television 60 p",
+	"precioCoste": 300,
+	"precioVenta": 350,
+	"img": "tv60.jpg"
+  },
+  {
+	"nombre": "Alexa",
+	"precioCoste": 250,
+	"precioVenta": 300,
+	"img": "alexa.jpg"
+  },
+  {
+	"nombre": "Google Home",
+	"precioCoste": 270,
+	"precioVenta": 370,
+	"img": "ghome.jpg"
+  }
+]

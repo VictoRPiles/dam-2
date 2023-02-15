@@ -1,0 +1,34 @@
+[
+  {
+	"Alimento": "Arándano",
+	"Calorias": "49",
+	"Grasas": "0.2",
+	"Proteina": "0.4",
+	"Carbohidratos": "12.7",
+	"img": "a2.jpg"
+  },
+  {
+	"Alimento": "Plátano",
+	"Calorias": "90",
+	"Grasas": "0.3",
+	"Proteina": "1.0",
+	"Carbohidratos": "23.5",
+	"img": "p2.jpg"
+  },
+  {
+	"Alimento": "Cereza",
+	"Calorias": "49",
+	"Grasas": "0.2",
+	"Proteina": "0.4",
+	"Carbohidratos": "12.7",
+	"img": "c2.jpg"
+  },
+  {
+	"Alimento": "Fresa",
+	"Calorias": "90",
+	"Grasas": "0.3",
+	"Proteina": "1.0",
+	"Carbohidratos": "23.5",
+	"img": "f2.jpg"
+  }
+]
