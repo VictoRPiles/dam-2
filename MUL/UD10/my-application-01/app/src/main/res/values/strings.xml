@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">My Application 01</string>
+    <string name="toast_usuario_encontrado">Usuario encontrado</string>
+    <string name="toast_usuario_no_encontrado">Usuario no encontrado</string>
+    <string name="toast_rellenar_codigo">Rellenar codigo</string>
+    <string name="toast_usuario_insertado">Usuario insertado</string>
+    <string name="toast_rellenar_campos">Rellenar campos</string>
+    <string name="toast_usuario_modificado">Usuario modificado</string>
+    <string name="toast_usuario_borrado">Usuario borrado</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="modificar">Modificar</string>
+    <string name="insertar">Insertar</string>
+    <string name="buscar">Buscar</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="nombre">Nombre</string>
+    <string name="codigo">Codigo</string>
+</resources>
