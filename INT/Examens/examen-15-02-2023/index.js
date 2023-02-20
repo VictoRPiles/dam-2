@@ -7,7 +7,7 @@ let collections = [];
 async function run() {
 	/* ########## OJO: MONGO ATLAS ########## */
 	const client = await MongoClient.connect(
-		'mongodb+srv://admin:admin@cluster0.9m4bmmq.mongodb.net/?retryWrites=true&w=majority',
+		'mongodb+srv://<usuari>:<contrasenya>@<cluster>',
 		{useNewUrlParser: true, useUnifiedTopology: true}
 	);
 	try {
