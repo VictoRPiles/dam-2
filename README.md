@@ -3565,25 +3565,56 @@ Fitxers del curs 2DAM Abastos.
 │   │   │               ├── Client.java
 │   │   │               ├── Color.java
 │   │   │               └── Server.java
-│   │   └── Examen17-11-2022
-│   │       ├── C
-│   │       │   └── Examen17-11-2022
-│   │       │       ├── cmake-build-debug
-│   │       │       │   └── Examen17_11_2022.cbp
-│   │       │       ├── CMakeLists.txt
-│   │       │       └── src
-│   │       │           └── procesos_VictorPilesDelgado.c
-│   │       └── Java
-│   │           └── Examen17-11-2022
-│   │               ├── pom.xml
-│   │               └── src
-│   │                   └── main
-│   │                       └── java
-│   │                           ├── Cinta.java
-│   │                           ├── Main.java
-│   │                           ├── RobotA.java
-│   │                           ├── RobotB.java
-│   │                           └── Robot.java
+│   │   ├── Examen17-11-2022
+│   │   │   ├── C
+│   │   │   │   └── Examen17-11-2022
+│   │   │   │       ├── cmake-build-debug
+│   │   │   │       │   └── Examen17_11_2022.cbp
+│   │   │   │       ├── CMakeLists.txt
+│   │   │   │       └── src
+│   │   │   │           └── procesos_VictorPilesDelgado.c
+│   │   │   └── Java
+│   │   │       └── Examen17-11-2022
+│   │   │           ├── pom.xml
+│   │   │           └── src
+│   │   │               └── main
+│   │   │                   └── java
+│   │   │                       ├── Cinta.java
+│   │   │                       ├── Main.java
+│   │   │                       ├── RobotA.java
+│   │   │                       ├── RobotB.java
+│   │   │                       └── Robot.java
+│   │   └── Ordinaria23-02-2023
+│   │       ├── pom.xml
+│   │       ├── src
+│   │       │   ├── main
+│   │       │   │   ├── java
+│   │       │   │   │   ├── client
+│   │       │   │   │   │   └── Client.java
+│   │       │   │   │   ├── objects
+│   │       │   │   │   │   └── Car.java
+│   │       │   │   │   ├── server
+│   │       │   │   │   │   └── Server.java
+│   │       │   │   │   └── util
+│   │       │   │   │       ├── Color.java
+│   │       │   │   │       └── Serializer.java
+│   │       │   │   └── resources
+│   │       │   └── test
+│   │       │       └── java
+│   │       └── target
+│   │           ├── classes
+│   │           │   ├── client
+│   │           │   │   └── Client.class
+│   │           │   ├── objects
+│   │           │   │   └── Car.class
+│   │           │   ├── server
+│   │           │   │   ├── Server$ClientHandler.class
+│   │           │   │   └── Server.class
+│   │           │   └── util
+│   │           │       ├── Color.class
+│   │           │       └── Serializer.class
+│   │           └── generated-sources
+│   │               └── annotations
 │   ├── Lenguaje-C.pdf
 │   ├── UD01
 │   │   ├── comunicacio-processos
@@ -3854,6 +3885,39 @@ Fitxers del curs 2DAM Abastos.
 │   │       │           └── PreguntesRespostes.txt
 │   │       └── UD4P3. Quiz Magic.pdf
 │   └── UD05
+│       ├── ExamenOrdinariaVesprada
+│       │   ├── pom.xml
+│       │   ├── src
+│       │   │   ├── main
+│       │   │   │   ├── java
+│       │   │   │   │   └── org
+│       │   │   │   │       └── example
+│       │   │   │   │           ├── client
+│       │   │   │   │           │   └── Client.java
+│       │   │   │   │           ├── objects
+│       │   │   │   │           │   └── Car.java
+│       │   │   │   │           ├── server
+│       │   │   │   │           │   └── Server.java
+│       │   │   │   │           └── util
+│       │   │   │   │               └── Color.java
+│       │   │   │   └── resources
+│       │   │   └── test
+│       │   │       └── java
+│       │   └── target
+│       │       ├── classes
+│       │       │   └── org
+│       │       │       └── example
+│       │       │           ├── client
+│       │       │           │   └── Client.class
+│       │       │           ├── objects
+│       │       │           │   └── Car.class
+│       │       │           ├── server
+│       │       │           │   ├── Server$ClientHandler.class
+│       │       │           │   └── Server.class
+│       │       │           └── util
+│       │       │               └── Color.class
+│       │       └── generated-sources
+│       │           └── annotations
 │       └── Hash
 │           ├── doc
 │           │   └── UD5P1. Resums de missatges.pdf
@@ -3911,5 +3975,5 @@ Fitxers del curs 2DAM Abastos.
         ├── Práctica 0 - Básica.pdf
         └── Practica Libreria.docx
 
-1520 directories, 2388 files
+1562 directories, 2410 files
 </pre>
