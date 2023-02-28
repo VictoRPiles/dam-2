@@ -1,0 +1,36 @@
+<odoo>
+    <data>
+
+        <!-- Vista tree -->
+        <record id="view_controller_onchange_car_tree" model="ir.ui.view">
+            <field name="name">view.controller.onchange.car.tree</field>
+            <field name="model">controller_onchange.car</field>
+            <field name="arch" type="xml">
+                <tree string="Coche">
+                    <field name="name"/>
+                    <field name="cv"/>
+                    <field name="fuel_litres"/>
+                    <field name="under_fuel"/>
+                    <!--<button name="method" string="Acción" class="oe_highlight" type="object"/>-->
+                </tree>
+            </field>
+        </record>
+
+        <!-- Acción para abrir vistas de los modelos -->
+        <record model="ir.actions.act_window" id="controller_onchange_car">
+            <field name="name">Coche</field>
+            <field name="res_model">controller_onchange.car</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menú item superior -->
+        <menuitem name="Controller OnChange" id="controller_onchange.menu_root"/>
+
+        <!-- Categorías de menú -->
+        <menuitem name="Modelos" id="controller_onchange.menu_1" parent="controller_onchange.menu_root"/>
+
+        <!-- Acciones del menú -->
+        <menuitem name="Coche" id="controller_onchange.menu_car" parent="controller_onchange.menu_1"
+                  action="controller_onchange_car"/>
+    </data>
+</odoo>

@@ -1,0 +1,100 @@
+<odoo>
+  <data>
+    <!-- ########## Bombero ########## -->
+    <record id="bombero0" model="piles.bombero">
+      <field name="name">Victor</field>
+      <field name="apellido1">Piles</field>
+      <field name="apellido2">Delgado</field>
+      <field name="nacmiento">2003-11-18</field>
+      <field name="salario">2000</field>
+      <field name="antiguedad">12</field>
+    </record>
+    <record id="bombero1" model="piles.bombero">
+      <field name="name">Ruben</field>
+      <field name="apellido1">Piles</field>
+      <field name="apellido2">Delgado</field>
+      <field name="nacmiento">2003-11-18</field>
+      <field name="salario">1800</field>
+      <field name="antiguedad">8</field>
+    </record>
+    <record id="bombero2" model="piles.bombero">
+      <field name="name">Nando</field>
+      <field name="apellido1">Piles</field>
+      <field name="apellido2">LaBlanca</field>
+      <field name="nacmiento">2002-02-18</field>
+      <field name="salario">1500</field>
+      <field name="antiguedad">5</field>
+    </record>
+    <record id="bombero3" model="piles.bombero">
+      <field name="name">Eduardo</field>
+      <field name="apellido1">Maestro</field>
+      <field name="nacmiento">1980-01-01</field>
+      <field name="salario">2000</field>
+      <field name="antiguedad">15</field>
+    </record>
+
+    <!-- ########## Camion ########## -->
+    <record id="camion0" model="piles.camion">
+      <field name="matricula">1234ABC</field>
+      <field name="modelo">Modelo 1</field>
+      <field name="cv">100</field>
+      <field name="capacidad_agua">1000</field>
+      <field name="escalera">True</field>
+      <field name="en_taller">True</field>
+      <field name="ruedas">4</field>
+    </record>
+    <record id="camion1" model="piles.camion">
+      <field name="matricula">4321CBA</field>
+      <field name="modelo">Modelo 2</field>
+      <field name="cv">120</field>
+      <field name="capacidad_agua">2000</field>
+      <field name="escalera">True</field>
+      <field name="en_taller">False</field>
+      <field name="ruedas">6</field>
+    </record>
+    <record id="camion2" model="piles.camion">
+      <field name="matricula">4567GSX</field>
+      <field name="modelo">Modelo 3</field>
+      <field name="cv">200</field>
+      <field name="capacidad_agua">1500</field>
+      <field name="escalera">False</field>
+      <field name="en_taller">False</field>
+      <field name="ruedas">6</field>
+    </record>
+    <record id="camion3" model="piles.camion">
+      <field name="matricula">7891RTX</field>
+      <field name="modelo">Modelo 3</field>
+      <field name="cv">300</field>
+      <field name="capacidad_agua">0</field>
+      <field name="escalera">False</field>
+      <field name="en_taller">False</field>
+      <field name="ruedas">6</field>
+    </record>
+
+    <!-- ########## Parque ########## -->
+    <record id="parque0" model="piles.parque">
+      <field name="name">Parque de pruebas 1</field>
+      <field name="direccion">Mercado de Abastos</field>
+      <field name="capacidad_bomberos">100</field>
+      <field name="capacidad_camiones">20</field>
+    </record>
+    <record id="parque1" model="piles.parque">
+      <field name="name">Parque de pruebas 2</field>
+      <field name="direccion">Benifaio</field>
+      <field name="capacidad_bomberos">50</field>
+      <field name="capacidad_camiones">5</field>
+    </record>
+    <record id="parque2" model="piles.parque">
+      <field name="name">Parque de pruebas 3</field>
+      <field name="direccion">Alzira</field>
+      <field name="capacidad_bomberos">250</field>
+      <field name="capacidad_camiones">15</field>
+    </record>
+    <record id="parque3" model="piles.parque">
+      <field name="name">Parque de pruebas 4</field>
+      <field name="direccion">Madrid</field>
+      <field name="capacidad_bomberos">1000</field>
+      <field name="capacidad_camiones">110</field>
+    </record>
+  </data>
+</odoo>

@@ -1,0 +1,92 @@
+<odoo>
+    <data>
+        <!-- ########## Fireman ########## -->
+        <!-- Fireman Tree  -->
+        <record id="fire_station.fireman_tree" model="ir.ui.view">
+            <field name="name">Fireman Tree</field>
+            <field name="model">fire_station.fireman</field>
+            <field name="arch" type="xml">
+                <tree string="Fireman">
+                    <field name="name"/>
+                    <field name="surname"/>
+                    <field name="age"/>
+                    <field name="birthday"/>
+                    <field name="salary"/>
+                    <field name="job"/>
+                    <field name="truck_id"/>
+                </tree>
+            </field>
+        </record>
+        <!-- Fireman Calendar -->
+        <record id="fire_station.fireman_calendar" model="ir.ui.view">
+            <field name="name">Fireman Calendar</field>
+            <field name="model">fire_station.fireman</field>
+            <field name="arch" type="xml">
+                <calendar string="Fireman" date_start="birthday" color="name">
+                    <field name="name"/>
+                    <field name="salary"/>
+                    <field name="job"/>
+                </calendar>
+            </field>
+        </record>
+        <!-- Fireman Window -->
+        <record model="ir.actions.act_window" id="fire_station.fireman_window">
+            <field name="name">Fireman Window</field>
+            <field name="res_model">fire_station.fireman</field>
+            <field name="view_mode">tree,form,calendar</field>
+        </record>
+        <!-- ########## Truck ########## -->
+        <!-- Truck Tree  -->
+        <record id="fire_station.truck_tree" model="ir.ui.view">
+            <field name="name">Truck Tree</field>
+            <field name="model">fire_station.truck</field>
+            <field name="arch" type="xml">
+                <tree string="Truck">
+                    <field name="number_plate"/>
+                    <field name="year"/>
+                    <field name="wheels"/>
+                    <field name="capacity"/>
+                    <field name="kilometers"/>
+                    <field name="station_id"/>
+                    <field name="fireman_ids"/>
+                </tree>
+            </field>
+        </record>
+        <!-- Truck Window -->
+        <record model="ir.actions.act_window" id="fire_station.truck_window">
+            <field name="name">Truck Window</field>
+            <field name="res_model">fire_station.truck</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- ########## Station ########## -->
+        <!-- Station Tree  -->
+        <record id="fire_station.station_tree" model="ir.ui.view">
+            <field name="name">Station Tree</field>
+            <field name="model">fire_station.station</field>
+            <field name="arch" type="xml">
+                <tree string="Station">
+                    <field name="name"/>
+                    <field name="year"/>
+                    <field name="city"/>
+                    <field name="truck_ids"/>
+                </tree>
+            </field>
+        </record>
+        <!-- Station Window -->
+        <record model="ir.actions.act_window" id="fire_station.station_window">
+            <field name="name">Station Window</field>
+            <field name="res_model">fire_station.station</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- ########## MENU ITEMS ########## -->
+        <!-- Top menu item -->
+        <menuitem name="Fire station" id="fire_station.menu_root"/>
+        <!-- menu categories -->
+        <menuitem name="Fireman" id="fire_station.menu_fireman" parent="fire_station.menu_root"
+                  action="fire_station.fireman_window"/>
+        <menuitem name="Truck" id="fire_station.menu_truck" parent="fire_station.menu_root"
+                  action="fire_station.truck_window"/>
+        <menuitem name="Station" id="fire_station.menu_station" parent="fire_station.menu_root"
+                  action="fire_station.station_window"/>
+    </data>
+</odoo>

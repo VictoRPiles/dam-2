@@ -1,0 +1,86 @@
+<odoo>
+    <data>
+        <!-- ########## Student ########## -->
+        <!-- Student Tree -->
+        <record model="ir.ui.view" id="inheritance_student.student_tree">
+            <field name="name">Student Tree</field>
+            <field name="model">inheritance_student.student</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="nif"/>
+                    <field name="name"/>
+                    <field name="surname1"/>
+                    <field name="surname2"/>
+                    <field name="birthday"/>
+                    <field name="age"/>
+                    <field name="average_grade"/>
+                    <field name="classroom_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Student Window -->
+        <record model="ir.actions.act_window" id="inheritance_student.student_window">
+            <field name="name">Student Window</field>
+            <field name="res_model">inheritance_student.student</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- ########## Teacher ########## -->
+        <!-- Teacher Tree -->
+        <record model="ir.ui.view" id="inheritance_student.teacher_tree">
+            <field name="name">Teacher Tree</field>
+            <field name="model">inheritance_student.teacher</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="nif"/>
+                    <field name="name"/>
+                    <field name="surname1"/>
+                    <field name="surname2"/>
+                    <field name="birthday"/>
+                    <field name="age"/>
+                    <field name="salary"/>
+                    <field name="classroom_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Teacher Window -->
+        <record model="ir.actions.act_window" id="inheritance_student.teacher_window">
+            <field name="name">Teacher Window</field>
+            <field name="res_model">inheritance_student.teacher</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- ########## Classroom ########## -->
+        <!-- Classroom Tree -->
+        <record model="ir.ui.view" id="inheritance_student.classroom_tree">
+            <field name="name">Classroom Tree</field>
+            <field name="model">inheritance_student.classroom</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="student_ids"/>
+                    <field name="teacher_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Classroom Window -->
+        <record model="ir.actions.act_window" id="inheritance_student.classroom_window">
+            <field name="name">Classroom Window</field>
+            <field name="res_model">inheritance_student.classroom</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Top menu item -->
+        <menuitem name="Inheritance student" id="inheritance_student.menu_root"/>
+        <!-- menu categories -->
+        <menuitem name="Student" id="inheritance_student.student" parent="inheritance_student.menu_root"
+                  action="inheritance_student.student_window"/>
+        <menuitem name="Teacher" id="inheritance_student.teacher" parent="inheritance_student.menu_root"
+                  action="inheritance_student.teacher_window"/>
+        <menuitem name="Classroom" id="inheritance_student.classroom" parent="inheritance_student.menu_root"
+                  action="inheritance_student.classroom_window"/>
+    </data>
+</odoo>

@@ -1,0 +1,137 @@
+<odoo>
+  <data>
+    <!-- ########## Inventory ########## -->
+    <!-- Inventory Tree -->
+    <record model="ir.ui.view" id="shopping_cart_security.inventory_tree">
+      <field name="name">Inventory List</field>
+      <field name="model">shopping_cart_security.inventory</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="quantity"/>
+          <field name="product_type"/>
+          <field name="price_per_unit"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Inventory Window -->
+    <record model="ir.actions.act_window" id="shopping_cart_security.inventory_window">
+      <field name="name">Inventory Window</field>
+      <field name="res_model">shopping_cart_security.inventory</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ########## Client ########## -->
+    <!-- Client Tree -->
+    <record model="ir.ui.view" id="shopping_cart_security.client_tree">
+      <field name="name">Client List</field>
+      <field name="model">shopping_cart_security.client</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="surname1"/>
+          <field name="surname2"/>
+          <field name="nif"/>
+          <field name="nif_tutor"/>
+          <field name="address"/>
+          <field name="country_id"/>
+          <field name="birthday"/>
+          <field name="age"/>
+          <field name="adult"/>
+          <field name="spent_money"/>
+          <field name="money_limit"/>
+          <field name="purchase_ids"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Client Form -->
+    <record model="ir.ui.view" id="shopping_cart_security.client_form">
+      <field name="name">Client Form</field>
+      <field name="model">shopping_cart_security.client</field>
+      <field name="arch" type="xml">
+        <form string="Client form">
+          <sheet>
+            <group>
+              <field name="nif"/>
+              <field name="name"/>
+              <field name="surname1"/>
+              <field name="surname2"/>
+              <field name="address"/>
+              <field name="country_id"/>
+            </group>
+            <group>
+              <field name="birthday"/>
+              <field name="age"/>
+              <field name="adult"/>
+              <separator colspan="2"/>
+              <field name="nif_tutor" attrs="{'invisible':[('adult','=',True)], 'required':[('adult','=',False)]}"/>
+            </group>
+            <notebook>
+              <page string="Purchases">
+                <label for="spent_money" string="Spent money"/>
+                <field name="spent_money"/>
+                <field name="money_limit"/>
+                <field name="purchase_ids"/>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Client Window -->
+    <record model="ir.actions.act_window" id="shopping_cart_security.client_window">
+      <field name="name">Client Window</field>
+      <field name="res_model">shopping_cart_security.client</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ########## Purchase ########## -->
+    <!-- Purchase Tree -->
+    <record model="ir.ui.view" id="shopping_cart_security.purchase_tree">
+      <field name="name">Purchase List</field>
+      <field name="model">shopping_cart_security.purchase</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="inventory_id"/>
+          <field name="client_id"/>
+          <field name="quantity"/>
+          <field name="date"/>
+          <field name="pay_method"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Purchase Calendar -->
+    <record model="ir.ui.view" id="shopping_cart_security.purchase_calendar">
+      <field name="name">Purchase Calendar</field>
+      <field name="model">shopping_cart_security.purchase</field>
+      <field name="arch" type="xml">
+        <calendar string="Purchase calendar" date_start="date">
+          <field name="inventory_id"/>
+          <field name="client_id"/>
+          <field name="quantity"/>
+        </calendar>
+      </field>
+    </record>
+
+    <!-- Purchase Window -->
+    <record model="ir.actions.act_window" id="shopping_cart_security.purchase_window">
+      <field name="name">Purchase Window</field>
+      <field name="res_model">shopping_cart_security.purchase</field>
+      <field name="view_mode">tree,form,calendar</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="Shopping Cart Security" id="shopping_cart_security.menu_root"/>
+    <!-- menu categories -->
+    <menuitem name="Inventory" id="shopping_cart_security.menu_inventory" parent="shopping_cart_security.menu_root"
+              action="shopping_cart_security.inventory_window"/>
+    <menuitem name="Client" id="shopping_cart_security.menu_client" parent="shopping_cart_security.menu_root"
+              action="shopping_cart_security.client_window"/>
+    <menuitem name="Purchase" id="shopping_cart_security.menu_purchase" parent="shopping_cart_security.menu_root"
+              action="shopping_cart_security.purchase_window"/>
+  </data>
+</odoo>

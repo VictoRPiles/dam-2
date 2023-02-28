@@ -1,0 +1,162 @@
+<odoo>
+  <data>
+    <!-- ########## Bombero ########## -->
+    <!-- Bombero Tree -->
+    <record model="ir.ui.view" id="piles.bombero_tree">
+      <field name="name">Bombero Tree</field>
+      <field name="model">piles.bombero</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="apellido1"/>
+          <field name="apellido2"/>
+          <field name="nacmiento"/>
+          <field name="salario"/>
+          <field name="antiguedad"/>
+          <field name="nacionalidad"/>
+          <field name="parque_id"/>
+        </tree>
+      </field>
+    </record>
+    <!-- Bombero Form -->
+    <record model="ir.ui.view" id="piles.bombero_form">
+      <field name="name">Bombero Form</field>
+      <field name="model">piles.bombero</field>
+      <field name="arch" type="xml">
+        <form string="Bombero form">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="apellido1"/>
+              <field name="apellido2"/>
+              <separator colspan="2"/>
+              <field name="salario"/>
+              <field name="nacionalidad"/>
+            </group>
+            <group>
+              <field name="nacmiento"/>
+              <field name="antiguedad"/>
+              <separator colspan="2"/>
+              <field name="parque_id"/>
+            </group>
+            <group>
+              <field name="carnet"/>
+              <field name="numero_carnet"
+                     attrs="{'invisible':[('carnet','=',False)], 'visible':[('carnet','=',True)]}"/>
+            </group>
+            <notebook>
+              <page string="Bombero Camion">
+                <label for="bomberocamion_ids" string="Bombero Camion"/>
+                <field name="bomberocamion_ids"/>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <!-- Bombero Window -->
+    <record model="ir.actions.act_window" id="piles.bombero_window">
+      <field name="name">Bombero Window</field>
+      <field name="res_model">piles.bombero</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ########## Camion ########## -->
+    <!-- Camion Tree -->
+    <record model="ir.ui.view" id="piles.camion_tree">
+      <field name="name">Camion Tree</field>
+      <field name="model">piles.camion</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="matricula"/>
+          <field name="modelo"/>
+          <field name="cv"/>
+          <field name="combustible"/>
+          <field name="debe_repostar"/>
+          <field name="capacidad_agua"/>
+          <field name="escalera"/>
+          <field name="en_taller"/>
+          <field name="ruedas"/>
+          <field name="parque_id"/>
+        </tree>
+      </field>
+    </record>
+    <!-- Camion Window -->
+    <record model="ir.actions.act_window" id="piles.camion_window">
+      <field name="name">Camion Window</field>
+      <field name="res_model">piles.camion</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ########## Parque ########## -->
+    <!-- Parque Tree -->
+    <record model="ir.ui.view" id="piles.parque_tree">
+      <field name="name">Parque Tree</field>
+      <field name="model">piles.parque</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="direccion"/>
+          <field name="pais"/>
+          <field name="capacidad_bomberos"/>
+          <field name="capacidad_camiones"/>
+          <field name="camiones_deben_repostar"/>
+          <field name="bombero_ids"/>
+          <field name="camion_ids"/>
+        </tree>
+      </field>
+    </record>
+    <!-- Parque Window -->
+    <record model="ir.actions.act_window" id="piles.parque_window">
+      <field name="name">Parque Window</field>
+      <field name="res_model">piles.parque</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ########## Bombero Camion ########## -->
+    <!-- Bombero Camion Tree -->
+    <record model="ir.ui.view" id="piles.bomberocamion_tree">
+      <field name="name">Bombero Camion Tree</field>
+      <field name="model">piles.bomberocamion</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="fecha_inicio"/>
+          <field name="fecha_fin"/>
+          <field name="puesto"/>
+          <field name="bombero_id"/>
+          <field name="camion_id"/>
+        </tree>
+      </field>
+    </record>
+    <!-- Bombero Camion Calendar -->
+    <record model="ir.ui.view" id="piles.bomberocamion_calendar">
+      <field name="name">Bombero Camion Calendar</field>
+      <field name="model">piles.bomberocamion</field>
+      <field name="arch" type="xml">
+        <calendar string=" Bombero Camion Calendar " date_start="fecha_inicio">
+          <field name="bombero_id"/>
+          <field name="camion_id"/>
+          <field name="puesto"/>
+        </calendar>
+      </field>
+    </record>
+    <!-- Bombero Camion Window -->
+    <record model="ir.actions.act_window" id="piles.bomberocamion_window">
+      <field name="name">Bombero Camion Window</field>
+      <field name="res_model">piles.bomberocamion</field>
+      <field name="view_mode">tree,form,calendar</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="Parque bomberos" id="piles.menu_root"/>
+    <!-- menu categories -->
+    <menuitem name="Bombero" id="piles.bombero_menu" parent="piles.menu_root"
+              action="piles.bombero_window"/>
+    <menuitem name="Camion" id="piles.camion_menu" parent="piles.menu_root"
+              action="piles.camion_window"/>
+    <menuitem name="Parque" id="piles.parque_menu" parent="piles.menu_root"
+              action="piles.parque_window"/>
+    <menuitem name="Bombero Camion" id="piles.bomberocamion_menu" parent="piles.menu_root"
+              action="piles.bomberocamion_window"/>
+  </data>
+</odoo>

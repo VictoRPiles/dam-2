@@ -1,0 +1,87 @@
+<!--suppress CheckTagEmptyBody -->
+<odoo>
+    <data>
+        <!-- ########## Inventory ########## -->
+        <record id="inventory0" model="shopping_cart.inventory">
+            <field name="name">Gibson Les Paul</field>
+            <field name="quantity">5</field>
+            <field name="product_type">Guitar</field>
+            <field name="price_per_unit">2000</field>
+        </record>
+        <record id="inventory1" model="shopping_cart.inventory">
+            <field name="name">Fender Stratocaster</field>
+            <field name="quantity">6</field>
+            <field name="product_type">Guitar</field>
+            <field name="price_per_unit">1200</field>
+        </record>
+        <record id="inventory2" model="shopping_cart.inventory">
+            <field name="name">Gibson Flying V</field>
+            <field name="quantity">2</field>
+            <field name="product_type">Guitar</field>
+            <field name="price_per_unit">1300</field>
+        </record>
+        <record id="inventory3" model="shopping_cart.inventory">
+            <field name="name">Ernie Ball 10-52</field>
+            <field name="quantity">50</field>
+            <field name="product_type">Guitar Strings</field>
+            <field name="price_per_unit">5</field>
+        </record>
+        <record id="inventory4" model="shopping_cart.inventory">
+            <field name="name">Boss TU-3</field>
+            <field name="quantity">12</field>
+            <field name="product_type">Guitar Pedal</field>
+            <field name="price_per_unit">50</field>
+        </record>
+
+        <!-- ########## Client ########## -->
+        <record id="client0" model="shopping_cart.client">
+            <field name="name">Victor</field>
+            <field name="surname1">Piles</field>
+            <field name="surname2">Delgado</field>
+            <field name="nif">12345678A</field>
+            <field name="nif_tutor"></field>
+            <field name="address">Benifaió</field>
+            <field name="country_id">68</field>
+            <field name="birthday">2003-11-18</field>
+            <field name="money_limit">5000</field>
+        </record>
+        <record id="client1" model="shopping_cart.client">
+            <field name="name">Nando</field>
+            <field name="surname1">Piles</field>
+            <field name="surname2">Lablanca</field>
+            <field name="nif">87654321B</field>
+            <field name="nif_tutor"></field>
+            <field name="address">Meliana</field>
+            <field name="country_id">68</field>
+            <field name="birthday">2002-04-12</field>
+            <field name="money_limit">2000</field>
+        </record>
+        <record id="client2" model="shopping_cart.client">
+            <field name="name">Falete</field>
+            <field name="surname1">Garcia</field>
+            <field name="surname2">Fernandez</field>
+            <field name="nif">78765643Z</field>
+            <field name="nif_tutor">1233456G</field>
+            <field name="address">Meliana</field>
+            <field name="country_id">68</field>
+            <field name="birthday">2006-01-01</field>
+            <field name="money_limit">5000</field>
+        </record>
+
+        <!-- ########## Purchase ########## -->
+        <record id="purchase0" model="shopping_cart.purchase">
+            <field name="inventory_id" ref="inventory0"></field>
+            <field name="client_id" ref="client2"></field>
+            <field name="quantity">1</field>
+            <field name="date">2023-01-15</field>
+            <field name="pay_method">card</field>
+        </record>
+        <record id="purchase1" model="shopping_cart.purchase">
+            <field name="inventory_id" ref="inventory1"></field>
+            <field name="client_id" ref="client2"></field>
+            <field name="quantity">1</field>
+            <field name="date">2023-01-20</field>
+            <field name="pay_method">cash</field>
+        </record>
+    </data>
+</odoo>

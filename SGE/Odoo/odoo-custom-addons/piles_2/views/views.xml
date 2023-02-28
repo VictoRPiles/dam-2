@@ -1,0 +1,52 @@
+<odoo>
+  <data>
+    <!-- ########## Parque ########## -->
+    <record model="ir.ui.view" id="piles_2.parque_tree">
+      <field name="name">Parque Tree</field>
+      <field name="model">piles_2.parque</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="direccion"/>
+          <field name="pais"/>
+          <field name="capacidad_bomberos"/>
+          <field name="capacidad_camiones"/>
+          <field name="bombero_ids"/>
+          <field name="camion_ids"/>
+        </tree>
+      </field>
+    </record>
+    <!-- Parque Window -->
+    <record model="ir.actions.act_window" id="piles_2.parque_window">
+      <field name="name">Parque Window</field>
+      <field name="res_model">piles_2.parque</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ########## Diputacion ########## -->
+    <!-- Diputacion Tree -->
+    <record model="ir.ui.view" id="piles_2.diputacion_tree">
+      <field name="name">Diputacion Tree</field>
+      <field name="model">piles_2.diputacion</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="parque_ids"/>
+        </tree>
+      </field>
+    </record>
+    <!-- Diputacion Window -->
+    <record model="ir.actions.act_window" id="piles_2.diputacion_window">
+      <field name="name">Diputacion Window</field>
+      <field name="res_model">piles_2.diputacion</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="Parque bomberos 2" id="piles_2.menu_root"/>
+    <!-- menu categories -->
+    <menuitem name="Parque" id="piles_2.parque_menu" parent="piles_2.menu_root" action="piles_2.parque_window"/>
+    <menuitem name="Diputacion" id="piles_2.diputacion_menu" parent="piles_2.menu_root"
+              action="piles_2.diputacion_window"/>
+  </data>
+</odoo>
